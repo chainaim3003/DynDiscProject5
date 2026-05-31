@@ -1,0 +1,16 @@
+{
+  "name": "@dyndisc/audit-framework-procurement",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Procurement-specific audit primitives layered on top of @dyndisc/audit-framework-core. Houses the procurement intent block (BuyerIntent/SellerIntent/Scenario), outcome-quality metrics (ZOPA/NBS/IR), and report templates (daily/weekly/forensic).",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'No build step — consumed directly as TypeScript via tsx'"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@dyndisc/audit-framework-core": "0.1.0"
+  },
+  "license": "UNLICENSED"
+}

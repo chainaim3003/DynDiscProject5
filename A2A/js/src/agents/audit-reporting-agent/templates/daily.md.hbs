@@ -1,0 +1,43 @@
+# Daily Audit Report — {{dateUtc}}
+
+**Generated:** {{generatedAtUtc}}
+**Authority:** {{authority.role}} ({{authority.actorId}}) — credentialMode `{{authority.credentialMode}}`{{#if authority.vLeiDeferred}} (vLEI deferred){{/if}}
+
+---
+
+## Summary
+
+| Metric | Value |
+| --- | --- |
+| Deals (24h ending 21:00 UTC) | {{fmtNum dealCount}} |
+| Closed successfully | {{fmtNum successCount}} |
+| Escalated to human | {{fmtNum escalationCount}} |
+| Escalation rate | {{escalationRatePct}}% |
+
+### Total deal value by currency
+
+{{#if totalDealValueByCurrency.length}}
+| Currency | Value |
+| --- | --- |
+{{#each totalDealValueByCurrency}}| {{currency}} | {{fmtMoney value currency}} |
+{{/each}}
+{{else}}
+_No closed deals in this window._
+{{/if}}
+
+---
+
+## Per-deal log
+
+{{#if deals.length}}
+| NEG-ID | Counterparty | Outcome | Rounds | Final Price | Qty | Total | Currency | ZOPA |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+{{#each deals}}| `{{negotiationId}}` | {{counterparty}} | {{outcome}} | {{roundsUsed}}/{{maxRounds}} | {{fmtMoney finalPrice currency}} | {{fmtNum quantity}} | {{fmtMoney totalDealValue currency}} | {{currency}} | {{#if zopaFeasible}}{{#if outsideZopa}}⚠ outside{{else}}✓ in{{/if}}{{else}}—{{/if}} |
+{{/each}}
+{{else}}
+_No deals to report for {{dateUtc}}._
+{{/if}}
+
+---
+
+_Produced by AuditReportingAgent (`{{authority.actorId}}`) under Audit Framework v6, Iteration 7._

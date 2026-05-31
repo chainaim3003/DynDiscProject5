@@ -1,0 +1,46 @@
+╔══════════════════════════════════════════════════════════════╗
+║           NEGOTIATION ESCALATION REPORT                     ║
+╚══════════════════════════════════════════════════════════════╝
+
+Negotiation ID   : NEG-1779106334409
+Date / Time      : 18 May 2026 5:42:32 PM
+Status           : ESCALATED — No agreement reached after 3 round(s)
+Quantity         : 2,000 units
+Delivery Date    : 2026-07-17
+
+────────────────────────────────────────────────────────────
+PRICE TRAIL
+────────────────────────────────────────────────────────────
+Rnd     Buyer         Seller        Gap         
+────────────────────────────────────────────────
+1       ₹350          ₹350          ₹0          
+2       ₹350          ₹350          ₹0          
+3       ₹350          ₹350          ₹0          
+
+────────────────────────────────────────────────────────────
+FINAL POSITIONS
+────────────────────────────────────────────────────────────
+Buyer's last offer  : ₹350
+Seller's last offer : ₹350
+Remaining gap       : ₹0
+Gap as % of seller  : 0.0%
+
+────────────────────────────────────────────────────────────
+AGENT REASONING — FINAL ROUND
+────────────────────────────────────────────────────────────
+BUYER   : LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback
+SELLER  : LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback
+
+────────────────────────────────────────────────────────────
+HUMAN ACTION REQUIRED
+────────────────────────────────────────────────────────────
+Please review the negotiation above and choose one of:
+
+  A)  Accept SELLER price     →  ₹350 / unit
+  B)  Accept BUYER price      →  ₹350 / unit
+  C)  Split the difference    →  ₹350 / unit
+  D)  Reject — do not proceed
+
+────────────────────────────────────────────────────────────
+Generated : 2026-05-18T12:12:32.287Z
+────────────────────────────────────────────────────────────

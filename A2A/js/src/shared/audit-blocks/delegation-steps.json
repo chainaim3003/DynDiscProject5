@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "source": "AUDIT-FRAMEWORK-V6-DESIGN.md Appendix B.2.2 (DECISIONS Item 4, addendum 2026-05-25)",
+  "description": "Canonical step names for delegationChain[] entries. The enum lives here, not in TS, so future iterations can extend it without code edits. Ordering is the canonical emit order: one entry per step per round when L2 is engaged; in BASIC mode only treasury-consultation is emitted (DECISIONS Q-iter4-A option (b)).",
+  "steps": [
+    {
+      "stepName": "treasury-consultation",
+      "description": "Seller queries JupiterTreasuryAgent for ACTUS PAM cash/NPV/safety-threshold check at the proposed price"
+    },
+    {
+      "stepName": "inventory-consultation",
+      "description": "Seller queries InventoryProvider for stock availability + production-capacity signal"
+    },
+    {
+      "stepName": "logistics-consultation",
+      "description": "Seller queries LogisticsProvider for shipping cost + delivery-feasibility signal"
+    },
+    {
+      "stepName": "credit-consultation",
+      "description": "Seller queries CreditProvider for buyer credit-rating + payment-risk signal"
+    },
+    {
+      "stepName": "executive-synthesis",
+      "description": "L2 executive reasoner aggregates advisor outputs + applies math-aggregator floor + produces the round decision"
+    },
+    {
+      "stepName": "consultation-routing",
+      "description": "M2-beta router selects which advisors to consult for this mode + round, per the resolved seller-response-mode capabilities"
+    }
+  ]
+}

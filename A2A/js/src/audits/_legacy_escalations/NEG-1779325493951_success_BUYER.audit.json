@@ -1,0 +1,505 @@
+{
+  "negotiationId": "NEG-1779325493951",
+  "perspective": "BUYER",
+  "outcome": "success",
+  "startedAt": "2026-05-21T01:04:53.951Z",
+  "generatedAt": "2026-05-21T01:06:41.867Z",
+  "sellerResponseMode": {
+    "mode": "BASIC_SALES_QUOTING_1",
+    "resolvedCapabilities": {
+      "treasuryConsultation": true,
+      "inventoryLogisticsSubAgents": false,
+      "creditSubAgent": false,
+      "advisorMathAggregator": false,
+      "llmExecutiveJudgment": false,
+      "styleFramework": false,
+      "opponentStyleInference": false,
+      "autonomyLevels": false,
+      "perCounterpartyProfiles": false,
+      "customCommodityPdModels": false
+    },
+    "providerModes": {
+      "inventory": "demo",
+      "logistics": "demo",
+      "credit": "demo"
+    },
+    "evaluationContext": "live",
+    "resolvedFromEnv": {
+      "SELLER_RESPONSE_MODE": null,
+      "INVENTORY_MODE": null,
+      "LOGISTICS_MODE": null,
+      "CREDIT_MODE": null,
+      "EVALUATION_CONTEXT": null
+    }
+  },
+  "parties": {
+    "self": {
+      "role": "BUYER",
+      "lei": "54930012QJWZMYHNJW95",
+      "legalEntityName": "TOMMY HILFIGER EUROPE B.V."
+    },
+    "counterparty": {
+      "role": "SELLER",
+      "lei": "3358004DXAMRWRUIYJ05",
+      "legalEntityName": "JUPITER KNITTING COMPANY"
+    }
+  },
+  "identity": {
+    "credentialMode": "plain"
+  },
+  "negotiation": {
+    "roundsUsed": 3,
+    "maxRounds": 3,
+    "finalPrice": 365,
+    "quantity": 30000,
+    "deliveryDate": "2026-07-20",
+    "paymentTerms": "Net 30",
+    "priceTrail": [
+      {
+        "round": 1,
+        "buyer": 255,
+        "seller": 380,
+        "gap": 125
+      },
+      {
+        "round": 2,
+        "buyer": 330,
+        "seller": 365,
+        "gap": 35
+      },
+      {
+        "round": 3,
+        "buyer": 365
+      }
+    ]
+  },
+  "outcomeQuality": {
+    "closed": true,
+    "closedPrice": 365,
+    "buyerMax": 395,
+    "sellerMin": 350,
+    "currency": "INR",
+    "IR": {
+      "buyerIR": 30,
+      "sellerIR": 15,
+      "bothIR": true
+    },
+    "ZOPA": {
+      "low": 350,
+      "high": 395,
+      "width": 45,
+      "wasFeasible": true
+    },
+    "NBS": {
+      "fairPrice": 372.5,
+      "deviationFromNBS": -7.5,
+      "deviationPercent": -33.33333333333333
+    },
+    "surplusSplit": {
+      "buyerShare": 0.6666666666666666,
+      "sellerShare": 0.3333333333333333,
+      "totalSurplus": 1350000
+    },
+    "flags": {
+      "agreementTrap": false,
+      "sellerCapturedMost": false,
+      "buyerCapturedMost": false,
+      "outsideZOPA": false
+    },
+    "summary": "Deal closed at ₹365, ₹8 below NBS fair price of ₹373. Buyer captured 67% of surplus.",
+    "computedAt": "2026-05-21T01:06:41.867Z"
+  },
+  "constraintDisclosure": {
+    "selfReservationPrice": {
+      "value": 395,
+      "source": "own-config",
+      "currency": "INR"
+    },
+    "fallbackUsed": {
+      "value": 350,
+      "source": "demo-constant",
+      "reason": "counterparty did not disclose sellerMin in ACCEPT_OFFER (older client or disclosure suppressed)"
+    }
+  },
+  "decisions": [
+    {
+      "round": 2,
+      "timestamp": "2026-05-21T01:05:42.919Z",
+      "perspective": "BUYER",
+      "incomingOffer": 380,
+      "llmProposal": {
+        "action": "COUNTER",
+        "price": 330,
+        "reasoning": "Moving significantly towards my target price of ₹330 demonstrates flexibility and commitment to closing, while still leaving room for the seller to adjust their price in the final round.",
+        "usedFallback": false
+      },
+      "finalDecision": {
+        "action": "COUNTER",
+        "price": 330
+      },
+      "marketContext": {
+        "sofrRate": 0.04365866591325047,
+        "sofrSource": "SIMULATED",
+        "effectiveBorrowingRate": 0.053242,
+        "cottonPricePerLb": 0.6311332779506206,
+        "capturedAt": "2026-05-21T01:05:42.919Z"
+      }
+    },
+    {
+      "round": 3,
+      "timestamp": "2026-05-21T01:06:21.798Z",
+      "perspective": "BUYER",
+      "incomingOffer": 365,
+      "llmProposal": {
+        "action": "ACCEPT",
+        "reasoning": "Their offer of \\u20b9365 is within our maximum budget, and accepting in this final round secures the deal, which is critical given current market conditions and the risk of deal failure.",
+        "usedFallback": false
+      },
+      "finalDecision": {
+        "action": "ACCEPT"
+      },
+      "marketContext": {
+        "sofrRate": 0.04365866591325047,
+        "sofrSource": "SIMULATED",
+        "effectiveBorrowingRate": 0.053242,
+        "cottonPricePerLb": 0.6311332779506206,
+        "capturedAt": "2026-05-21T01:06:21.799Z"
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "messageType": "OFFER",
+      "from": "BUYER",
+      "offeredPrice": 255,
+      "decision": "OFFER",
+      "reasoning": "Opening at ₹255, leaving negotiation room",
+      "timestamp": "2026-05-21T01:04:58.560Z",
+      "negotiationId": "NEG-1779325493951"
+    },
+    {
+      "round": 1,
+      "messageType": "COUNTER_OFFER",
+      "from": "SELLER",
+      "offeredPrice": 380,
+      "previousPrice": 255,
+      "priceMovement": 125,
+      "priceMovementPercent": 49.01960784313725,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "Their offer of ₹255 is significantly below our production cost and minimum acceptable margin. Our counter of ₹380 establishes a realistic price point for profitable operations, anchoring the negotiation.",
+      "timestamp": "2026-05-21T01:05:34.907Z",
+      "negotiationId": "NEG-1779325493951"
+    },
+    {
+      "round": 2,
+      "messageType": "COUNTER_OFFER",
+      "from": "BUYER",
+      "offeredPrice": 330,
+      "previousPrice": 255,
+      "priceMovement": 75,
+      "priceMovementPercent": 29.411764705882355,
+      "gap": 50,
+      "gapClosed": 60,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "Moving significantly towards my target price of ₹330 demonstrates flexibility and commitment to closing, while still leaving room for the seller to adjust their price in the final round.",
+      "timestamp": "2026-05-21T01:05:53.565Z",
+      "negotiationId": "NEG-1779325493951"
+    },
+    {
+      "round": 2,
+      "messageType": "COUNTER_OFFER",
+      "from": "SELLER",
+      "offeredPrice": 365,
+      "previousPrice": 380,
+      "priceMovement": -15,
+      "priceMovementPercent": -3.9473684210526314,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "Their offer is below our margin price of ₹355/unit, but we are making a significant concession to ₹365/unit to show flexibility and commitment to closing the deal while protecting our profitability amidst rising production costs.",
+      "timestamp": "2026-05-21T01:06:18.227Z",
+      "negotiationId": "NEG-1779325493951"
+    },
+    {
+      "round": 3,
+      "messageType": "ACCEPT",
+      "from": "BUYER",
+      "offeredPrice": 365,
+      "decision": "ACCEPT",
+      "reasoning": "Accepting seller's offer based on strategic analysis",
+      "timestamp": "2026-05-21T01:06:21.799Z",
+      "negotiationId": "NEG-1779325493951"
+    }
+  ],
+  "notifications": [
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "sse-2026-05-21T01:04:53.958Z",
+      "sentAt": "2026-05-21T01:04:53.958Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "",
+      "sentAt": "2026-05-21T01:04:53.958Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC_REDACTED_LEGACY exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "sse-2026-05-21T01:04:54.886Z",
+      "sentAt": "2026-05-21T01:04:54.886Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "",
+      "sentAt": "2026-05-21T01:04:54.887Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC_REDACTED_LEGACY exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "sse-2026-05-21T01:04:56.115Z",
+      "sentAt": "2026-05-21T01:04:56.115Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "",
+      "sentAt": "2026-05-21T01:04:56.115Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC_REDACTED_LEGACY exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "sse-2026-05-21T01:04:56.524Z",
+      "sentAt": "2026-05-21T01:04:56.524Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "",
+      "sentAt": "2026-05-21T01:04:56.525Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC_REDACTED_LEGACY exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "sse-2026-05-21T01:05:31.374Z",
+      "sentAt": "2026-05-21T01:05:31.374Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "",
+      "sentAt": "2026-05-21T01:05:31.375Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC_REDACTED_LEGACY exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "sse-2026-05-21T01:05:33.647Z",
+      "sentAt": "2026-05-21T01:05:33.647Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "",
+      "sentAt": "2026-05-21T01:05:33.648Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC_REDACTED_LEGACY exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "sse-2026-05-21T01:05:42.920Z",
+      "sentAt": "2026-05-21T01:05:42.920Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "",
+      "sentAt": "2026-05-21T01:05:42.920Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC_REDACTED_LEGACY exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "sse-2026-05-21T01:05:46.702Z",
+      "sentAt": "2026-05-21T01:05:46.702Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "",
+      "sentAt": "2026-05-21T01:05:46.703Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC_REDACTED_LEGACY exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "sse-2026-05-21T01:06:17.246Z",
+      "sentAt": "2026-05-21T01:06:17.246Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "",
+      "sentAt": "2026-05-21T01:06:17.247Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC_REDACTED_LEGACY exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "sse-2026-05-21T01:06:17.692Z",
+      "sentAt": "2026-05-21T01:06:17.692Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1779325493951",
+      "providerMessageId": "",
+      "sentAt": "2026-05-21T01:06:17.693Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC_REDACTED_LEGACY exceeded the 50 daily messages limit"
+    }
+  ],
+  "notificationsSummary": {
+    "total": 20,
+    "delivered": 10,
+    "failed": 10,
+    "skipped": 0,
+    "byChannelKind": {
+      "ui-dashboard": 10,
+      "whatsapp": 10
+    }
+  }
+}

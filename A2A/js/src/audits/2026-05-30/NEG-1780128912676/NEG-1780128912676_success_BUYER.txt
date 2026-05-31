@@ -1,0 +1,48 @@
+╔══════════════════════════════════════════════════════════════╗
+║       NEGOTIATION SUCCESS REPORT — HUMAN OVERVIEW            ║
+╚══════════════════════════════════════════════════════════════╝
+
+Negotiation ID   : NEG-1780128912676
+Date / Time      : 30 May 2026 1:46:20 pm
+Outcome          : DEAL CLOSED — Agreement reached in 3 round(s) (max 3)
+Perspective      : BUYER
+
+────────────────────────────────────────────────────────────
+AGREED DEAL TERMS
+────────────────────────────────────────────────────────────
+Agreed Price     : Rs.360 / unit
+Quantity         : 2,000 units
+Total Deal Value : Rs.7,20,000
+Delivery Date    : 2026-07-29
+Payment Terms    : Net 30
+
+────────────────────────────────────────────────────────────
+PRICE TRAIL
+────────────────────────────────────────────────────────────
+Rnd     Buyer         Seller        Gap         
+────────────────────────────────────────────────
+1       Rs.312        Rs.375        Rs.63       
+2       Rs.345        Rs.360        Rs.15       
+3       Rs.360        Rs.360        Rs.0        
+
+Buyer conceded   : Rs.48  (Rs.312 -> Rs.360)
+Seller conceded  : Rs.15  (Rs.375 -> Rs.360)
+
+────────────────────────────────────────────────────────────
+AGENT REASONING — FINAL ROUND
+────────────────────────────────────────────────────────────
+BUYER   : LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback
+SELLER  : Seller accepted our offer
+
+────────────────────────────────────────────────────────────
+HUMAN REVIEW CHECKLIST
+────────────────────────────────────────────────────────────
+This deal closed autonomously. Please confirm:
+
+  [x]  Final price Rs.360/unit is within procurement policy
+  [x]  Delivery date 2026-07-29 is operationally achievable
+  [x]  Payment terms Net 30 are acceptable to finance
+
+────────────────────────────────────────────────────────────
+Generated : 2026-05-30T08:16:20.903Z
+────────────────────────────────────────────────────────────

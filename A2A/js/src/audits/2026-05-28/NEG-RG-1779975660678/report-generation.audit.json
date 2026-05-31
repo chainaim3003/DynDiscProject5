@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "auditKind": "report-generation",
+  "actorId": "AGT-RG-1779975555146",
+  "actorRole": "Chief Audit Officer",
+  "reportType": "daily",
+  "reportKey": "2026-05-28",
+  "outputPath": "C:\\SATHYA\\CHAINAIM3003\\mcp-servers\\FINAGENTS\\FINAGENTS1\\DynDisc4-ent1\\A2A\\js\\src\\audits\\reports\\daily\\2026-05-28.md",
+  "triggerSource": "http-ui",
+  "durationMs": 128,
+  "inputLineCount": 3,
+  "authority": {
+    "actorId": "AGT-RG-1779975555146",
+    "actorType": "AuditReportingAgent",
+    "role": "Chief Audit Officer",
+    "credentialMode": "plain",
+    "vLeiDeferred": true,
+    "authorityScope": [
+      "generate-daily-report",
+      "generate-weekly-report",
+      "generate-forensic-report",
+      "read-audit-corpus",
+      "write-self-audit"
+    ],
+    "issuedAt": "2026-05-28T13:39:15.146Z",
+    "lei": null
+  },
+  "startedAt": "2026-05-28T13:41:00.550Z",
+  "completedAt": "2026-05-28T13:41:00.678Z"
+}

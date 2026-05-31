@@ -1,0 +1,41 @@
+# Weekly Audit Report — {{weekKey}}
+
+**Week:** {{weekStartUtc}} (Mon) → {{weekEndUtc}} (Sun) — UTC
+**Generated:** {{generatedAtUtc}}
+**Authority:** {{authority.role}} ({{authority.actorId}}) — credentialMode `{{authority.credentialMode}}`{{#if authority.vLeiDeferred}} (vLEI deferred){{/if}}
+
+---
+
+## Summary
+
+| Metric | Value |
+| --- | --- |
+| Deals this week | {{fmtNum dealCount}} |
+| Closed successfully | {{fmtNum successCount}} |
+| Escalated to human | {{fmtNum escalationCount}} |
+| Escalation rate | {{escalationRatePct}}% |
+
+### Total deal value by currency
+
+{{#if totalDealValueByCurrency.length}}
+| Currency | Value |
+| --- | --- |
+{{#each totalDealValueByCurrency}}| {{currency}} | {{fmtMoney value currency}} |
+{{/each}}
+{{else}}
+_No closed deals in this window._
+{{/if}}
+
+---
+
+## Daily breakdown
+
+| Date (UTC) | Deals | Successes | Escalations |
+| --- | --- | --- | --- |
+{{#each byDay}}| {{dateUtc}} | {{fmtNum dealCount}} | {{fmtNum successCount}} | {{fmtNum escalationCount}} |
+{{/each}}
+
+---
+
+_Produced by AuditReportingAgent (`{{authority.actorId}}`) under Audit Framework v6, Iteration 7._
+_Per-deal detail is in the corresponding daily reports under `audits/reports/daily/`._

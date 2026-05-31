@@ -1,0 +1,46 @@
+╔══════════════════════════════════════════════════════════════╗
+║           NEGOTIATION ESCALATION REPORT                     ║
+╚══════════════════════════════════════════════════════════════╝
+
+Negotiation ID   : NEG-1779372019845
+Date / Time      : 21 May 2026 7:31:11 PM
+Status           : ESCALATED — No agreement reached after 3 round(s)
+Quantity         : 100,000 units
+Delivery Date    : 2026-07-20
+
+────────────────────────────────────────────────────────────
+PRICE TRAIL
+────────────────────────────────────────────────────────────
+Rnd     Buyer         Seller        Gap         
+────────────────────────────────────────────────
+1       ₹268          ₹378          ₹110        
+2       ₹378          ₹378          ₹0          
+3       ₹378          ₹355          ₹23         
+
+────────────────────────────────────────────────────────────
+FINAL POSITIONS
+────────────────────────────────────────────────────────────
+Buyer's last offer  : ₹378
+Seller's last offer : ₹355
+Remaining gap       : ₹-23
+Gap as % of seller  : -6.5%
+
+────────────────────────────────────────────────────────────
+AGENT REASONING — FINAL ROUND
+────────────────────────────────────────────────────────────
+BUYER   : LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback
+SELLER  : Treasury ACTUS override: cash/NPV check failed at ₹378. Minimum viable price: ₹355
+
+────────────────────────────────────────────────────────────
+HUMAN ACTION REQUIRED
+────────────────────────────────────────────────────────────
+Please review the negotiation above and choose one of:
+
+  A)  Accept SELLER price     →  ₹355 / unit
+  B)  Accept BUYER price      →  ₹378 / unit
+  C)  Split the difference    →  ₹367 / unit
+  D)  Reject — do not proceed
+
+────────────────────────────────────────────────────────────
+Generated : 2026-05-21T14:01:11.230Z
+────────────────────────────────────────────────────────────

@@ -1,0 +1,109 @@
+# Forensic Audit Report — {{negotiationId}}
+
+**Generated:** {{generatedAtUtc}}
+**Authority:** {{authority.role}} ({{authority.actorId}}) — credentialMode `{{authority.credentialMode}}`{{#if authority.vLeiDeferred}} (vLEI deferred){{/if}}
+**Seller-side audit available:** {{#if hasSellerAudit}}yes{{else}}no{{/if}}
+
+---
+
+> **Note:** This markdown narrative is a human-readable precursor to the
+> canonical PDF artifact. The PDF (rendered via `shared/audit-pdf.ts`,
+> covering all 14 v6 audit blocks) is the regulator-grade record. See
+> `POST /api/reports/forensic` for the PDF stream.
+
+---
+
+## 1. Deal Summary
+
+| Field | Value |
+| --- | --- |
+| Negotiation ID | `{{audit.negotiationId}}` |
+| Outcome | {{audit.outcome}} |
+| Started at | {{audit.startedAt}} |
+| Generated at | {{audit.generatedAt}} |
+| Final price | {{fmtMoney audit.outcomeQuality.finalPrice audit.outcomeQuality.currency}} |
+| Quantity | {{fmtNum audit.outcomeQuality.quantity}} |
+| Total deal value | {{fmtMoney audit.outcomeQuality.totalDealValue audit.outcomeQuality.currency}} |
+| Rounds used | {{audit.outcomeQuality.roundsUsed}} / {{audit.outcomeQuality.maxRounds}} |
+| Counterparty | {{audit.agentCounterparty.entityName}} ({{audit.agentCounterparty.lei}}) |
+
+## 2. Outcome Quality (iter-3)
+
+```json
+{{jsonStringify audit.outcomeQuality}}
+```
+
+## 3. Decision Trail (iter-1, length-summary only)
+
+Decision count: **{{audit.decisions.length}}**.
+Full per-round decisions are in the source audit JSON and rendered fully
+in the PDF version of this report.
+
+## 4. Market Context (iter-2)
+
+```json
+{{jsonStringify audit.marketContext}}
+```
+
+## 5. Identity Provenance (iter-2)
+
+```json
+{{jsonStringify audit.identityProof}}
+```
+
+## 6. Wire Signing Posture (iter-2)
+
+```json
+{{jsonStringify audit.messageSigningPosture}}
+```
+
+## 7. Stated Intent (iter-3)
+
+```json
+{{jsonStringify audit.intent}}
+```
+
+## 8. Self-Check Verdict (iter-5)
+
+```json
+{{jsonStringify audit.selfCheck}}
+```
+
+## 9. Reasoning Trace (iter-4)
+
+Think-cycle round count: **{{#if audit.thinkCycleTrace}}{{audit.thinkCycleTrace.length}}{{else}}n/a (BASIC mode or buyer side){{/if}}**.
+Per-step content is in the source audit JSON and the PDF.
+
+## 10. Delegation Chain (iter-4)
+
+```json
+{{jsonStringify audit.delegationChain}}
+```
+
+## 11. Autonomy Posture (iter-3)
+
+```json
+{{jsonStringify audit.autonomy}}
+```
+
+## 12. LLM Economics (iter-5)
+
+```json
+{{jsonStringify audit.frameworkMetrics}}
+```
+
+## 13. Wire Message Log (iter-2)
+
+Message event count: **{{#if audit.messageLog}}{{audit.messageLog.length}}{{else}}0{{/if}}**.
+Each `seal()`/`verify()` event is recorded in the source audit JSON and rendered fully in the PDF.
+
+## 14. Compliance Mapping (iter-5)
+
+```json
+{{jsonStringify audit.compliance}}
+```
+
+---
+
+_Produced by AuditReportingAgent (`{{authority.actorId}}`) under Audit Framework v6, Iteration 7._
+_For the regulator-grade PDF version, call `POST /api/reports/forensic` with `{ "negotiationId": "{{negotiationId}}" }`._

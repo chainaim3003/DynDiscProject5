@@ -1,0 +1,651 @@
+// ================= SHARED NEGOTIATION TYPES =================
+
+// Iter 3 (Audit Framework v6) — ScenarioIntentExcerpt is the audit-only
+// payload carried on OfferData.scenarioIntent and stored on agent state
+// for use by `shared/audit-blocks/intent-block.ts` at deal close.
+// See AUDIT-FRAMEWORK-V6-DECISIONS.md § "2026-05-24 ... Item 6".
+import type { ScenarioIntentExcerpt } from "./intent-types.js";
+
+export type NegotiationStatus =
+    | "INITIATED"
+    | "NEGOTIATING"
+    | "ACCEPTED"
+    | "COMPLETED"
+    | "FAILED"
+    | "REJECTED"
+    | "ESCALATED"
+    | "DD_COMPLETED";   // negotiation + dynamic discounting fully settled
+
+export type NegotiationAction = "OFFER" | "COUNTER_OFFER" | "ACCEPT" | "REJECT";
+
+export type AgentRole = "BUYER" | "SELLER";
+
+// ================= NEGOTIATION DATA SCHEMAS =================
+
+export interface NegotiationDataBase {
+    negotiationId: string;
+    round: number;
+    timestamp: string;
+}
+
+export interface OfferData extends NegotiationDataBase {
+    type: "OFFER";
+    pricePerUnit: number;
+    quantity: number;
+    from: AgentRole;
+    deliveryDate: string;
+    // WEDGE1 / M2-γ — multi-dimensional negotiation context (optional, backward-compatible).
+    // Populated when the buyer was started with the flagged CLI form:
+    //   start negotiation --product X --qty N --buyer-budget $ --buyer-style S --buyer-deadline D
+    // Undefined for the legacy bare-number form (`start negotiation 300`) — preserves
+    // Guarantee A byte-identical behavior. Consumers (seller-agent) MUST treat
+    // these as optional and fall back to their existing defaults when undefined.
+    productCode?: string;     // e.g. "FAB-COTTON-180GSM"
+    buyerStyle?:  string;     // TKI five: aggressive|assertive|balanced|cooperative|win-win-seeking
+
+    // Iter 3 (Audit Framework v6) — audit-only payload. Populated on the
+    // FIRST OFFER the buyer sends when the negotiation was started with
+    // `--scenario <id>`. The seller captures this onto
+    // SellerNegotiationState.receivedScenarioIntent in handleBuyerOffer
+    // and uses it ONLY for its `intent` audit block at deal close. The
+    // seller's runtime behavior is NOT affected — it still follows its
+    // own .env (SELLER_RESPONSE_MODE) and SELLER_CONFIG. See
+    // AUDIT-FRAMEWORK-V6-DECISIONS.md § "2026-05-24 ... Item 6".
+    scenarioIntent?: ScenarioIntentExcerpt;
+}
+
+export interface CounterOfferData extends NegotiationDataBase {
+    type: "COUNTER_OFFER";
+    pricePerUnit: number;
+    previousPrice: number;
+    from: AgentRole;
+    reasoning?: string;
+}
+
+export interface AcceptanceData extends NegotiationDataBase {
+    type: "ACCEPT_OFFER";
+    acceptedPrice: number;
+    from: AgentRole;
+    finalTerms: {
+        pricePerUnit: number;
+        quantity: number;
+        totalAmount: number;
+        deliveryDate: string;
+    };
+    // Iteration 4: post-deal disclosure for audit purposes. The sender voluntarily
+    // discloses their private reservation price (sellerMin if from SELLER,
+    // buyerMax if from BUYER) so the counterparty's audit JSON can record what
+    // was actually known about the bargaining zone. Not used in negotiation
+    // logic — only recorded after the fact. Never echoed to the UI chat.
+    disclosed?: {
+        reservationPrice: number;   // sellerMin (if from=SELLER) or buyerMax (if from=BUYER)
+        currency:         "INR" | "USD";
+        note?:            string;   // free-form, e.g. "for audit only"
+    };
+}
+
+export interface RejectionData extends NegotiationDataBase {
+    type: "REJECT_OFFER";
+    from: AgentRole;
+    reason: string;
+    finalRound: boolean;
+}
+
+export interface EscalationNoticeData extends NegotiationDataBase {
+    type: "ESCALATION_NOTICE";
+    from: AgentRole;
+    buyerFinalOffer:  number;
+    sellerFinalOffer: number;
+    gap:              number;
+    reportPath:       string;
+}
+
+export interface InvoiceData {
+    type: "INVOICE";
+    invoiceId: string;
+    negotiationId: string;
+    poId: string;
+    invoiceDate: string;
+    terms: {
+        pricePerUnit: number;
+        quantity: number;
+        subtotal: number;
+        tax: number;
+        total: number;
+    };
+    paymentTerms: string;
+    deliveryDate: string;
+}
+
+export interface PurchaseOrderData {
+    type: "PURCHASE_ORDER";
+    poId: string;
+    negotiationId: string;
+    orderDate: string;
+    terms: {
+        pricePerUnit: number;
+        quantity: number;
+        total: number;
+    };
+    deliveryDate: string;
+    // Iteration 4: buyer's voluntary post-deal disclosure of its maxBudget so
+    // the seller's audit JSON can record the bargaining zone the buyer was
+    // operating in. Audit-only — NOT used for negotiation logic, NEVER shown
+    // in the chat UI.
+    disclosed?: {
+        reservationPrice: number;   // buyerMax
+        currency:         "INR" | "USD";
+        note?:            string;
+    };
+}
+
+// ================= DYNAMIC DISCOUNTING MESSAGE TYPES =================
+
+export interface DDOfferData {
+    type: "DD_OFFER";
+    invoiceId: string;
+    negotiationId: string;
+    invoiceDate: string;
+    dueDate: string;
+    originalTotal: number;
+    maxDiscountRate: number;
+    paymentTermsDays: number;
+    proposedSettlementDate: string;
+    discountAtProposedDate: {
+        daysEarly: number;
+        totalDays: number;
+        appliedRate: number;
+        discountedAmount: number;
+        savingAmount: number;
+    };
+}
+
+export interface DDAcceptData {
+    type: "DD_ACCEPT";
+    invoiceId: string;
+    negotiationId: string;
+    chosenSettlementDate: string;
+    from: "BUYER";
+}
+
+export interface DDInvoiceData {
+    type: "DD_INVOICE";
+    invoiceId: string;
+    negotiationId: string;
+    originalTotal: number;
+    discountedTotal: number;
+    savingAmount: number;
+    appliedRate: number;
+    settlementDate: string;
+    dueDate: string;
+    actusContractId: string;
+    actusScenarioId: string;
+    actusSimulationStatus: "SUCCESS" | "FAILED";
+    actusError?: string;
+}
+
+export type NegotiationData =
+    | OfferData
+    | CounterOfferData
+    | AcceptanceData
+    | RejectionData
+    | EscalationNoticeData
+    | InvoiceData
+    | PurchaseOrderData
+    | DDOfferData
+    | DDAcceptData
+    | DDInvoiceData;
+
+// ================= ITERATION 4 — DECISION TRAIL =================
+// Each round, each agent records what the LLM proposed, what the constraint
+// validator did to it, any treasury override, the market context, and the
+// final outgoing decision. Stored in the audit JSON for full explainability.
+
+export interface DecisionTrailEntry {
+    round:              number;
+    timestamp:          string;
+    perspective:        AgentRole;
+    incomingOffer?:     number;            // what the counterparty just offered (undefined for round 1 buyer-side)
+    llmProposal: {
+        // "OFFER" is used by the round-1 seed entry (buyer-side opening offer)
+        // added in iter-1 / Bug 2 fix; the runtime decision union remains
+        // ACCEPT/COUNTER/REJECT but the seed needs an explicit OFFER label so
+        // decisions[] is never empty even for deals that escalate before
+        // makeNegotiationDecision() runs.
+        action:         "OFFER" | "ACCEPT" | "COUNTER" | "REJECT";
+        price?:         number;
+        reasoning:      string;
+        usedFallback?:  boolean;            // true if rule-based fallback was used
+    };
+    constraintAdjustment?: {
+        action:         "ACCEPT" | "COUNTER" | "REJECT";
+        price?:         number;
+        reasoning:      string;
+    };
+    treasuryOverride?: {                    // seller-side only
+        approved:       boolean;
+        minViablePrice?: number;
+        failReasons?:   string[];
+        npvOfDeal?:     number;
+        netProfit?:     number;
+    };
+    finalDecision: {
+        // Includes "OFFER" for the iter-1 round-1 seed entry (see llmProposal note above).
+        action:         "OFFER" | "ACCEPT" | "COUNTER" | "REJECT";
+        price?:         number;
+    };
+    marketContext?: {
+        sofrRate:               number;
+        sofrSource:             string;
+        effectiveBorrowingRate: number;
+        cottonPricePerLb?:      number;
+        capturedAt:             string;
+    };
+}
+
+// =============================================================================
+// Audit Framework v6 / Iter 3 — CommitGateEvent
+// =============================================================================
+//
+// Per-negotiation list of events that would have fired a human-approval
+// commit gate IF one existed. Today no such gate exists —
+// `autonomy.commitGate.state` is always `"NOT_REQUIRED"`. This array is
+// emitted into `autonomy.commitGate.wouldFireAt[]` so a regulator reviewing
+// the audit can see what the agent decided autonomously that a future
+// stricter posture might require human approval for.
+//
+// Event types are locked in AUDIT-FRAMEWORK-V6-DECISIONS.md § "2026-05-24
+// ... Item 5":
+//
+//   TREASURY_VETO            — ACTUS / NPV / safety-threshold rejection
+//                              (wouldRequireApproval: true)
+//   MAX_ROUNDS_REACHED       — buyer escalateToHuman on round exhaustion
+//                              (wouldRequireApproval: true)
+//   COUNTERPARTY_REJECT_FINAL— buyer received finalRound=true REJECT
+//                              (wouldRequireApproval: true)
+//   GUARDRAIL_OVERRIDE       — applySellerConstraints overrode LLM proposal;
+//                              informational only (wouldRequireApproval: false)
+//
+// Both agents accumulate events in-memory on their state, parallel to how
+// `decisionTrail` is accumulated today.
+
+export type CommitGateEventType =
+    | "TREASURY_VETO"
+    | "MAX_ROUNDS_REACHED"
+    | "COUNTERPARTY_REJECT_FINAL"
+    | "GUARDRAIL_OVERRIDE";
+
+export type CommitGateEventSeverity = "high" | "medium" | "low" | "none";
+
+export interface CommitGateEvent {
+    /** Discriminator for the event kind. See header for the four locked values. */
+    eventType:             CommitGateEventType;
+    /** Round number when the event was emitted. 1-indexed. */
+    round:                 number;
+    /** ISO 8601 timestamp. */
+    timestamp:             string;
+    /** Which subsystem produced the event, e.g. "buyer-agent.escalateToHuman". */
+    triggerSource:         string;
+    /** Free-form details for forensic review. Should NOT include PII or secrets. */
+    details:               string;
+    /** Severity per the locked enum. Informational events use "low" or "none". */
+    severity:              CommitGateEventSeverity;
+    /** Whether a future commit-gate posture would have required human approval. */
+    wouldRequireApproval:  boolean;
+}
+
+// Constraint disclosure record — captures what each side disclosed about its
+// private reservation price, and an integrity flag comparing to the
+// known-true demo constant (will go away once the demo is replaced by real
+// onboarded counterparty constraint records).
+export interface ConstraintDisclosureRecord {
+    selfReservationPrice: {
+        value:    number;
+        source:   "own-config";
+        currency: "INR" | "USD";
+    };
+    disclosedByCounterparty?: {
+        value:     number;
+        source:    "disclosed-in-ACCEPT_OFFER" | "disclosed-in-PURCHASE_ORDER" | "not-disclosed";
+        currency:  "INR" | "USD";
+        receivedAt: string;
+        note?:     string;
+    };
+    fallbackUsed?: {
+        value:    number;
+        source:   "demo-constant";
+        reason:   string;
+    };
+}
+
+// ================= vLEI / IPEX AUDIT RECORDS =================
+// These are stored on the negotiation state and saved to the JSON audit file.
+
+/** Record of a vLEI delegation verification event */
+export interface VLEIAuditRecord {
+    verified:            boolean;
+    agentName:           string;
+    agentAID:            string;
+    oorHolderName:       string;
+    legalEntityName:     string;
+    lei:                 string;
+    trustChain:          string[];
+    verifiedAt:          string;
+    verificationScript:  string;   // "DEEP" | "DEEP-EXT"
+    verificationType:    string;   // "STANDARD" | "EXTERNAL"
+    error?:              string;
+}
+
+/** Record of an IPEX credential exchange event */
+export interface IPEXAuditRecord {
+    invoiceId:           string;
+    invoiceType:         "INVOICE" | "DD_INVOICE";
+    credentialSAID?:     string;
+    grantSAID?:          string;
+    admitSAID?:          string;
+    issued:              boolean;
+    granted:             boolean;
+    admitted:            boolean;
+    timestamp:           string;
+    error?:              string;
+}
+
+/** Market data snapshot captured during negotiation */
+export interface MarketAuditRecord {
+    sofrRate:               number;
+    sofrSource:             string;   // "FRED" | "SIMULATED"
+    cottonPricePerLb:       number;
+    effectiveBorrowingRate: number;
+    capturedAt:             string;
+}
+
+// ================= STATE MANAGEMENT =================
+
+export interface RoundHistory {
+    round: number;
+    buyerOffer?: number;
+    sellerOffer?: number;
+    buyerAction?: NegotiationAction;
+    sellerAction?: NegotiationAction;
+    timestamp: string;
+    reasoning?: string;
+}
+
+export interface BuyerNegotiationState {
+    negotiationId: string;
+    contextId: string;
+    status: NegotiationStatus;
+
+    // Parameters
+    targetQuantity: number;
+    maxBudget: number;
+    deliveryDate: string;
+
+    // Round tracking
+    currentRound: number;
+    maxRounds: number;
+
+    // History
+    history: RoundHistory[];
+
+    // Current state
+    lastBuyerOffer?: number;
+    lastSellerOffer?: number;
+
+    // Final agreement
+    agreedPrice?: number;
+    totalCost?: number;
+
+    // Strategy
+    strategyParams: {
+        aggressiveness: number;
+        riskTolerance: number;
+        initialOfferRange: { min: number; max: number };
+    };
+
+    // WEDGE1 / M2-γ — multi-dimensional context (optional; populated when the
+    // negotiation was started via the flagged CLI form). Undefined for the
+    // legacy `start negotiation 300` path — Guarantee A byte-identical.
+    productCode?: string;     // e.g. "FAB-COTTON-180GSM"
+    buyerStyle?:  string;     // TKI five — see OfferData
+
+    // ── Audit trail (Step 5) ──────────────────────────────────────────────────
+    vleiVerification?:  VLEIAuditRecord;    // buyer verified seller
+    ipexInvoice?:       IPEXAuditRecord;    // admitted invoice credential
+    ipexDDInvoice?:     IPEXAuditRecord;    // admitted DD invoice credential
+    marketSnapshot?:    MarketAuditRecord;  // market data at negotiation time
+
+    // ── Iter 3 (Audit Framework v6) ─────────────────────────────────────────
+    // Declared mandate. Populated in startNegotiation() when the negotiation
+    // was created with `--scenario <id>`. Used by the intent audit block at
+    // deal close. Undefined when the buyer was started via the bare CLI form;
+    // in that case the intent block falls back to AGENT_DEFAULT_CONFIG.
+    scenarioIntent?:    ScenarioIntentExcerpt;
+    // Events that would have fired a human-approval commit gate if one
+    // existed. Emitted into autonomy.commitGate.wouldFireAt[] by the
+    // autonomy audit block. See `CommitGateEvent` interface for the locked
+    // four-value event taxonomy.
+    commitGateEvents?:  CommitGateEvent[];
+}
+
+export interface SellerNegotiationState {
+    negotiationId: string;
+    contextId: string;
+    status: NegotiationStatus;
+
+    // Business constraints (PRIVATE)
+    marginPrice: number;
+    targetProfitPercentage: number;
+
+    // Parameters
+    quantity: number;
+    deliveryDate: string;
+
+    // Round tracking
+    currentRound: number;
+    maxRounds: number;
+
+    // History
+    history: RoundHistory[];
+
+    // Current state
+    lastBuyerOffer?: number;
+    lastSellerOffer?: number;
+
+    // Final agreement
+    agreedPrice?: number;
+    profitPerUnit?: number;
+    totalRevenue?: number;
+
+    // Strategy
+    strategyParams: {
+        flexibility: number;
+        dealPriority: number;
+        minProfitMargin: number;
+    };
+
+    // Treasury consultation results (most recent)
+    lastTreasuryResult?: TreasuryConsultationSummary;
+
+    // WEDGE1 / M2-γ — multi-dimensional context received from buyer (optional).
+    // Captured from OfferData.productCode / OfferData.buyerStyle in handleBuyerOffer
+    // when the buyer started with the flagged form. The L2 wire (runL2Path)
+    // prefers state.productCode over the hardcoded "FAB-COTTON-180GSM" fallback
+    // when it's set, so the inventory/credit/logistics sub-agents receive the
+    // buyer-supplied product code in their consultation input.
+    productCode?: string;
+    buyerStyle?:  string;
+
+    // ── Audit trail (Step 5) ──────────────────────────────────────────────────
+    vleiVerification?:  VLEIAuditRecord;    // seller verified buyer
+    ipexInvoice?:       IPEXAuditRecord;    // issued/granted invoice credential
+    ipexDDInvoice?:     IPEXAuditRecord;    // issued/granted DD invoice credential
+    marketSnapshot?:    MarketAuditRecord;  // market data at negotiation time
+
+    // ── Iter 3 (Audit Framework v6) ─────────────────────────────────────────
+    // Mandate received from the buyer on its first OFFER. Audit-only —
+    // the seller does NOT use this to drive behavior. Captured in
+    // handleBuyerOffer when OfferData.scenarioIntent is present. Undefined
+    // when the buyer used the bare CLI form (no scenario), in which case
+    // the seller's intent audit block falls back to AGENT_DEFAULT_CONFIG
+    // derived from its SELLER_CONFIG.
+    receivedScenarioIntent?: ScenarioIntentExcerpt;
+    // Events that would have fired a human-approval commit gate if one
+    // existed. Same semantics as the buyer-side field; populated by
+    // applyTreasuryConstraint and L2's runL2Path when treasury vetoes.
+    commitGateEvents?:  CommitGateEvent[];
+}
+
+// ================= DECISION MAKING =================
+
+export interface NegotiationDecision {
+    action: "ACCEPT" | "COUNTER" | "REJECT";
+    price?: number;
+    reasoning: string;
+}
+
+export interface LLMResponse {
+    action: "ACCEPT" | "COUNTER" | "REJECT";
+    price?: number;
+    reasoning: string;
+    confidence?: number;
+}
+
+// ================= TREASURY TYPES =================
+
+export interface TreasuryConsultationQuery {
+    negotiationId: string;
+    pricePerUnit:  number;
+    quantity:      number;
+    paymentTerms:  number;
+    round:         number;
+}
+
+export interface TreasuryConsultationSummary {
+    round:               number;
+    priceQueried:        number;
+    approved:            boolean;
+    npvOfDeal:           number;
+    netProfit:           number;
+    projectedMinBalance: number;
+    safetyThreshold:     number;
+    workingCapitalCost:  number;
+    minViablePrice?:     number;
+    overrideApplied:     boolean;
+}
+
+// ================= LOGGING =================
+
+export interface NegotiationLog {
+    timestamp: string;
+    negotiationId: string;
+    round: number;
+    messageType: string;
+    from: AgentRole;
+
+    offeredPrice?: number;
+    previousPrice?: number;
+    priceMovement?: number;
+    priceMovementPercent?: number;
+
+    decision: NegotiationAction;
+    reasoning?: string;
+
+    gap?: number;
+    gapClosed?: number;
+
+    // ── WEDGE1 / Guarantee C — message-ordering audit invariant ────────
+    // Populated when the log entry corresponds to a SEALED message (either
+    // received-and-verified or sent-after-seal). Both agents' audits, when
+    // filtered to entries with these fields populated and sorted by
+    // (direction, envelopeCounter), MUST produce byte-identical sequences.
+    // The regression test in scripts/test-envelope-ordering.ts enforces this.
+    //
+    // Fields are optional for backward compatibility:
+    //   - Legacy unsealed messages (older clients) leave them undefined
+    //   - Internal logger events (e.g. SELLER bilateral-accept echo) leave
+    //     them undefined since no envelope was minted for them
+    envelopeCounter?: number;     // from envelope.counter
+    envelopeHash?:    string;     // from envelope.envelopeHash — canonical event ref
+}
+
+// ================= JSON AUDIT FILE =================
+// Complete audit trail saved as NEG-xxx_audit.json for UI consumption.
+
+export interface NegotiationAudit {
+    // Header
+    negotiationId:   string;
+    timestamp:       string;
+    outcome:         NegotiationStatus;
+    perspective:     AgentRole;
+
+    // Parties with vLEI identity
+    parties: {
+        seller: {
+            agentName:       string;
+            agentAID?:       string;
+            oorHolderName?:  string;
+            legalEntityName: string;
+            lei:             string;
+        };
+        buyer: {
+            agentName:       string;
+            agentAID?:       string;
+            oorHolderName?:  string;
+            legalEntityName: string;
+            lei:             string;
+        };
+    };
+
+    // vLEI verification events
+    vleiVerification?: {
+        sellerVerifiedBuyer?: VLEIAuditRecord;
+        buyerVerifiedSeller?: VLEIAuditRecord;
+    };
+
+    // Negotiation rounds
+    negotiation: {
+        rounds:          RoundHistory[];
+        roundsUsed:      number;
+        maxRounds:       number;
+        finalPrice?:     number;
+        quantity:        number;
+        totalDealValue?: number;
+        deliveryDate:    string;
+        paymentTerms:    string;
+    };
+
+    // Invoice & IPEX
+    invoice?: {
+        invoiceId:     string;
+        subtotal:      number;
+        tax:           number;
+        total:         number;
+        ipex?:         IPEXAuditRecord;
+    };
+
+    // Dynamic Discounting
+    dynamicDiscounting?: {
+        offered:            boolean;
+        decision?:          "AUTO_ACCEPT" | "AUTO_REJECT" | "ESCALATED_TO_CPO";
+        maxDiscountRate?:   number;
+        originalTotal?:     number;
+        discountedTotal?:   number;
+        savingAmount?:      number;
+        appliedRate?:       number;
+        settlementDate?:    string;
+        dueDate?:           string;
+        ipex?:              IPEXAuditRecord;
+        actus?: {
+            contractId:      string;
+            status:          "SUCCESS" | "FAILED";
+            error?:          string;
+        };
+    };
+
+    // Treasury ACTUS validation
+    treasury?: TreasuryConsultationSummary;
+
+    // Market data
+    marketData?: MarketAuditRecord;
+}

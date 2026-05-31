@@ -1,0 +1,46 @@
+╔══════════════════════════════════════════════════════════════╗
+║           NEGOTIATION ESCALATION REPORT                     ║
+╚══════════════════════════════════════════════════════════════╝
+
+Negotiation ID   : NEG-1779950667123
+Date / Time      : 28 May 2026 12:15:12 PM
+Status           : ESCALATED — No agreement reached after 3 round(s)
+Quantity         : 20,000 units
+Delivery Date    : 2026-07-27
+
+────────────────────────────────────────────────────────────
+PRICE TRAIL
+────────────────────────────────────────────────────────────
+Rnd     Buyer         Seller        Gap         
+────────────────────────────────────────────────
+1       ₹293          ₹355          ₹62         
+2       ₹345          ₹355          ₹10         
+3       ₹345          ₹355          ₹10         
+
+────────────────────────────────────────────────────────────
+FINAL POSITIONS
+────────────────────────────────────────────────────────────
+Buyer's last offer  : ₹345
+Seller's last offer : ₹355
+Remaining gap       : ₹10
+Gap as % of seller  : 2.8%
+
+────────────────────────────────────────────────────────────
+AGENT REASONING — FINAL ROUND
+────────────────────────────────────────────────────────────
+BUYER   : Our maximum budget is ₹345/unit, which was our last offer. This is our final offer and we cannot exceed this price.
+SELLER  : Their offer of ₹345 is below our minimum profitable price of ₹356. This counter represents our absolute lowest acceptable price to ensure a minimal profit in this final round. (decreased from last offer)
+
+────────────────────────────────────────────────────────────
+HUMAN ACTION REQUIRED
+────────────────────────────────────────────────────────────
+Please review the negotiation above and choose one of:
+
+  A)  Accept SELLER price     →  ₹355 / unit
+  B)  Accept BUYER price      →  ₹345 / unit
+  C)  Split the difference    →  ₹350 / unit
+  D)  Reject — do not proceed
+
+────────────────────────────────────────────────────────────
+Generated : 2026-05-28T06:45:12.033Z
+────────────────────────────────────────────────────────────

@@ -1,0 +1,31 @@
+# ============================================================================
+# Repo-root .gitignore for DynDisc4-ent1
+# ============================================================================
+# Scope: applies to the WHOLE repo, including A2A/, Legent/, ui/, DESIGN/,
+# and any future subfolder. Subfolder-specific patterns still live in their
+# own .gitignore files (e.g. A2A/js/.gitignore for node_modules, runtime
+# artifacts, and the iter-6 SQLite sidecar).
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Environment files - NEVER commit real secrets
+# ----------------------------------------------------------------------------
+# Standard Next.js / Node.js convention: gitignore .env and .env*.local at
+# any depth in the repo. This covers all subfolders without requiring per-
+# subfolder entries.
+#
+# .env.example* files are intentionally NOT ignored - they are committed as
+# SANITIZED TEMPLATES so developers know which environment variables are
+# required to run the project.
+#
+# RULE: real keys go ONLY in .env (or .env.local). NEVER paste real keys
+# into .env.example or any other committed file. A leaked Gemini API key
+# in A2A/js/.env.example (discovered 2026-05-25) prompted this repo-root
+# .gitignore. Rotation of the leaked key is being coordinated with the
+# key owner separately; this file prevents recurrence regardless.
+# ----------------------------------------------------------------------------
+**/.env
+**/.env*.local
+
+A2A/js/src/audits/audits.sqlite-shm
+A2A/js/src/audits/audits.sqlite-wal

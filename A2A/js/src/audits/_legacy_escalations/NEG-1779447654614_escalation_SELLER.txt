@@ -1,0 +1,47 @@
+╔══════════════════════════════════════════════════════════════╗
+║           NEGOTIATION ESCALATION REPORT                     ║
+╚══════════════════════════════════════════════════════════════╝
+
+Negotiation ID   : NEG-1779447654614
+Date / Time      : 22 May 2026 4:31:36 PM
+Status           : ESCALATED — No agreement reached after 3 round(s)
+Quantity         : 200,000 units
+Delivery Date    : 2026-07-21
+
+────────────────────────────────────────────────────────────
+PRICE TRAIL
+────────────────────────────────────────────────────────────
+Rnd     Buyer         Seller        Gap         
+────────────────────────────────────────────────
+1       ₹312          ₹375          ₹63         
+2       ₹375          ₹355          ₹20         
+3       ₹380          ₹355          ₹25         
+
+────────────────────────────────────────────────────────────
+FINAL POSITIONS
+────────────────────────────────────────────────────────────
+Buyer's last offer  : ₹380
+Seller's last offer : ₹355
+Remaining gap       : ₹-25
+Gap as % of seller  : -7.0%
+
+────────────────────────────────────────────────────────────
+AGENT REASONING — FINAL ROUND
+────────────────────────────────────────────────────────────
+BUYER   : LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback (increased from last offer)
+SELLER  : Treasury ACTUS simulation rejected ₹380 — Gap cash ₹-64,930,000 < safety threshold ₹300,000. Countering at treasury minimum ₹355
+SELLER  : Treasury ACTUS override: cash/NPV check failed at ₹380. Minimum viable price: ₹355
+
+────────────────────────────────────────────────────────────
+HUMAN ACTION REQUIRED
+────────────────────────────────────────────────────────────
+Please review the negotiation above and choose one of:
+
+  A)  Accept SELLER price     →  ₹355 / unit
+  B)  Accept BUYER price      →  ₹380 / unit
+  C)  Split the difference    →  ₹368 / unit
+  D)  Reject — do not proceed
+
+────────────────────────────────────────────────────────────
+Generated : 2026-05-22T11:01:36.292Z
+────────────────────────────────────────────────────────────

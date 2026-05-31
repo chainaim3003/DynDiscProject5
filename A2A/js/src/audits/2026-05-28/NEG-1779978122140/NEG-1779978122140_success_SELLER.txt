@@ -1,0 +1,67 @@
+╔══════════════════════════════════════════════════════════════╗
+║       NEGOTIATION SUCCESS REPORT — HUMAN OVERVIEW            ║
+╚══════════════════════════════════════════════════════════════╝
+
+Negotiation ID   : NEG-1779978122140
+Date / Time      : 28 May 2026 7:52:40 PM
+Outcome          : DEAL CLOSED — Agreement reached in 2 round(s) (max 3)
+Perspective      : SELLER
+
+────────────────────────────────────────────────────────────
+AGREED DEAL TERMS
+────────────────────────────────────────────────────────────
+Agreed Price     : Rs.370 / unit
+Quantity         : 50,000 units
+Total Deal Value : Rs.18,500,000
+Delivery Date    : 2026-07-27
+Payment Terms    : Net 30
+
+────────────────────────────────────────────────────────────
+SELLER FINANCIALS (Jupiter Knitting Company)
+────────────────────────────────────────────────────────────
+Profit per unit  : Rs.20
+Margin (%)       : 5.7%  above cost floor Rs.350
+Total Revenue    : Rs.18,500,000
+
+────────────────────────────────────────────────────────────
+PRICE TRAIL
+────────────────────────────────────────────────────────────
+Rnd     Buyer         Seller        Gap         
+────────────────────────────────────────────────
+1       Rs.303        Rs.370        Rs.67       
+2       Rs.370        Rs.370        Rs.0        
+
+Buyer conceded   : Rs.67  (Rs.303 -> Rs.370)
+Seller conceded  : Rs.0  (Rs.370 -> Rs.370)
+
+────────────────────────────────────────────────────────────
+AGENT REASONING — FINAL ROUND
+────────────────────────────────────────────────────────────
+BUYER   : LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback
+SELLER  : LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback
+BUYER   : Buyer accepted our offer
+SELLER  : bilateral acceptance rule
+
+────────────────────────────────────────────────────────────
+TREASURY VALIDATION (JupiterTreasuryAgent — ACTUS PAM Simulation)
+────────────────────────────────────────────────────────────
+Consulted rounds : 2
+All checks passed: NO — override(s) applied
+Deal NPV         : Rs.5,086,793
+Net profit (adj.): Rs.1,806,964 (after working capital financing cost)
+Working cap. cost: Rs.163,036
+Gap cash position: Rs.-15,430,000 [BELOW THRESHOLD]  (threshold Rs.300,000)
+
+────────────────────────────────────────────────────────────
+HUMAN REVIEW CHECKLIST
+────────────────────────────────────────────────────────────
+This deal closed autonomously. Please confirm:
+
+  [x]  Final price Rs.370/unit is within procurement policy
+  [x]  Delivery date 2026-07-27 is operationally achievable
+  [x]  Payment terms Net 30 are acceptable to finance
+  [!]  At least one treasury check failed — review override logic
+
+────────────────────────────────────────────────────────────
+Generated : 2026-05-28T14:22:40.867Z
+────────────────────────────────────────────────────────────

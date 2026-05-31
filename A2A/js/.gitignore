@@ -1,0 +1,43 @@
+node_modules
+.genkit
+.firebase
+.a2a-tasks
+
+# Environment variables - NEVER commit these
+.env
+.env.local
+src/agents/buyer-agent/.env
+src/agents/seller-agent/.env
+src/agents/treasury-agent/.env
+
+# Phase A.3 (KRAM validation) — agent BRAN secrets copied DD-local.
+# These are private keys-material equivalents; never source-controlled.
+# Pattern covers buyer-agent/.secret/, seller-agent/.secret/, and any future
+# agent .secret/ folder. The copy-brans-to-dd-local script populates these;
+# they are throwaway Phase-A artifacts (the script is deleted in B.6.3).
+**/.secret/
+
+# Iteration 1 — customer-onboarded agent cards are runtime data,
+# never source-controlled. Demo cards live in demo-agent-cards/ instead.
+live-agent-cards/
+!live-agent-cards/.gitkeep
+
+# Legacy folder — emptied during iteration 1 migration. Kept temporarily
+# for backward-compat fallback in agent index.ts. Will be deleted post-May-19.
+agent-cards/
+
+# Negotiation outputs — runtime artifacts (audit trails, escalation reports)
+# These are local demo evidence, not source code. Keep in working dir.
+src/escalations/NEG-*.txt
+src/escalations/NEG-*.audit.json
+
+# Iter-6 — audit SQLite sidecar (built from index.jsonl, never source-controlled).
+# Pattern is *.sqlite per DECISIONS.md iter-6 addendum Item 2; this does NOT
+# cover hypothetical WAL/SHM sidecar files (audits.sqlite-wal, audits.sqlite-shm)
+# which better-sqlite3 only creates in journal_mode=WAL. Default mode is DELETE,
+# so the narrower pattern is sufficient today. Revisit via addendum if WAL is
+# adopted. The .sidecar-state.json filename is reserved for a future Strategy B
+# (persisted-offset) upgrade; Strategy A in iter-6 does not write it.
+src/audits/*.sqlite
+src/audits/.sidecar-state.json
+

@@ -1,0 +1,14 @@
+{
+  "name": "@dyndisc/audit-framework-core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Domain-agnostic audit framework primitives (identity, message-signing posture, autonomy, think-cycle trace, delegation chain, framework metrics, self-check, compliance crosswalks). Used by audit-framework-procurement and any future domain-specific audit package.",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'No build step — consumed directly as TypeScript via tsx'"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "license": "UNLICENSED"
+}
