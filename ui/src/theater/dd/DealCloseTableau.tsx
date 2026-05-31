@@ -64,7 +64,11 @@ export function DealCloseTableau({ eventId, ts, parsed }: DealCloseTableauProps)
 
     const t = window.setTimeout(() => setCanDismiss(true), MIN_VISIBLE_MS);
     return () => window.clearTimeout(t);
-  }, [eventId, ts, shownEventId]);
+    // shownEventId intentionally NOT a dep: setting it inside this effect would
+    // re-run the effect and the cleanup would clear the timer above before it
+    // fires, so canDismiss never flips and the × never appears (card sticks).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [eventId, ts]);
 
   const show = !!shownEventId && !dismissed && !!parsed;
 

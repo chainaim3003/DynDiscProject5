@@ -152,6 +152,22 @@ const BUYER_DD_CONFIG = {
   escalationBand: 0.01,   // 1 %
 };
 
+// ================= MESSAGE SIGNING GATE (Iteration 2) =================
+// Resolved ONCE at module load: must envelope-less (unsealed) messages be
+// REJECTED? "Signed" modes (kram, vlei) default to required; plain keeps the
+// backward-compatible passthrough. An explicit SIGNING_REQUIRED=true|false env
+// var always wins. Parsed the same way getMessageSigner() parses SIGNING_MODE
+// so both agree on what "signed" means. (dotenv.config ran above, so process.env
+// already reflects this agent's .env.)
+const SIGNING_MODE_RAW       = (process.env.SIGNING_MODE ?? "plain").toLowerCase().trim();
+const SIGNING_MODE_IS_SIGNED = SIGNING_MODE_RAW === "kram" || SIGNING_MODE_RAW === "vlei";
+const SIGNING_REQUIRED        = (() => {
+  const raw = (process.env.SIGNING_REQUIRED ?? "").toLowerCase().trim();
+  if (raw === "true")  return true;
+  if (raw === "false") return false;
+  return SIGNING_MODE_IS_SIGNED;   // default: required when signing mode is signed
+})();
+
 // ================= BUYER AGENT EXECUTOR =================
 class BuyerAgentExecutor implements AgentExecutor {
   private negotiations = new Map<string, BuyerNegotiationState>();
@@ -515,6 +531,17 @@ class BuyerAgentExecutor implements AgentExecutor {
         );
         actual = sealed.payload;
       } else {
+        // Iter 3: a message arrived with NO envelope. In a signed mode with
+        // SIGNING_REQUIRED, an unsealed message is a gap in the integrity chain
+        // and MUST be rejected (mirrors the sealed-path reject above). Plain
+        // mode keeps the backward-compatible passthrough.
+        if (SIGNING_MODE_IS_SIGNED && SIGNING_REQUIRED) {
+          logInternal(`[envelope] ❌ REJECTED unsealed message — signing required`);
+          this.respond(bus, taskId, contextId,
+            `❌ Message rejected: unsealed message — signing required (mode=${SIGNING_MODE_RAW})`
+          );
+          return;
+        }
         logInternal(`[envelope] ⚠ received UNSEALED message type=${(rawData as any)?.type} — chain has a gap`);
         actual = rawData as NegotiationData;
       }
@@ -2515,6 +2542,7 @@ try {
 const _messageSigner = getMessageSigner();
 await _messageSigner.init?.();
 console.log(`[startup] message signer ready: mode=${_messageSigner.mode()}`);
+console.log(`[startup] signing-required gate: SIGNING_REQUIRED=${SIGNING_REQUIRED} (mode=${SIGNING_MODE_RAW}, signed=${SIGNING_MODE_IS_SIGNED}) — unsealed messages will be ${SIGNING_REQUIRED ? "REJECTED" : "passed through"}`);
 
 const PORT = process.env.PORT || 9090;
 app.listen(PORT, () => {

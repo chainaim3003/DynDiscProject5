@@ -55,5 +55,34 @@ foreach ($name in $AgentPorts.Keys) {
 }
 
 Write-Host ""
-Write-Host "Done. The agent PowerShell windows themselves remain open -- close them manually." -ForegroundColor Cyan
+Write-Host "Closing agent windows..." -ForegroundColor Cyan
+
+# run-all-agents.ps1 launched each agent in its own window via
+# Start-Process powershell.exe -NoExit, setting the window title to
+# "<Name> (port <Port>)". Killing the agent's node process above does NOT
+# close that window (it was spawned with -NoExit), so here we find each
+# window's PowerShell host process by that title and stop it — which closes
+# the window. Independent of the port loop above so windows still close even
+# if the agent had already stopped/crashed. Guards: never the current script
+# process ($PID), and only powershell/pwsh hosts (so an unrelated app whose
+# title happens to contain "(port NNNN)" is never touched).
+foreach ($name in $AgentPorts.Keys) {
+    $port = $AgentPorts[$name]
+    $windows = Get-Process -ErrorAction SilentlyContinue | Where-Object {
+        $_.Id -ne $PID -and
+        ($_.ProcessName -eq 'powershell' -or $_.ProcessName -eq 'pwsh') -and
+        $_.MainWindowTitle -like "*(port $port)*"
+    }
+    foreach ($w in $windows) {
+        try {
+            Stop-Process -Id $w.Id -Force -ErrorAction Stop
+            Write-Host "  [OK]   closed window '$($w.MainWindowTitle)' (pid $($w.Id))" -ForegroundColor Green
+        } catch {
+            Write-Host "  [warn] could not close window for $name on port $port -- $_" -ForegroundColor Yellow
+        }
+    }
+}
+
+Write-Host ""
+Write-Host "Done. All agents stopped and their windows closed." -ForegroundColor Cyan
 Write-Host ""
