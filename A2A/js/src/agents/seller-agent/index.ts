@@ -1322,6 +1322,11 @@ class SellerAgentExecutor implements AgentExecutor {
     } else {
       // Legacy BASIC_SALES_QUOTING_1/L1_DELEGATED_ADVISORS path — unchanged from iteration 4. Guarantee A.
       logInternal(`Consulting JupiterTreasuryAgent for Round 1 — buyer offer ₹${pricePerUnit}...`);
+      // Theater: per-round Treasury consult marker over SSE (additive, SSE-only).
+      // This is a REAL event — consultTreasury() runs on the next line. Lets the
+      // UI dip the seller's verification hop toward the Treasury agent. The
+      // consult logic itself is untouched.
+      sseBroadcaster.broadcast(`[treasury] consulted round=1 price=${pricePerUnit} neg=${negotiationId}`);
       const treasuryResult = await this.consultTreasury(negotiationId, pricePerUnit, quantity, 1);
 
       decision = await this.makeNegotiationDecision(state);
@@ -1449,6 +1454,10 @@ class SellerAgentExecutor implements AgentExecutor {
     } else {
       // Legacy BASIC_SALES_QUOTING_1/L1_DELEGATED_ADVISORS path — unchanged from iteration 4. Guarantee A.
       logInternal(`Consulting JupiterTreasuryAgent for Round ${state.currentRound} — buyer counter ₹${data.pricePerUnit}...`);
+      // Theater: per-round Treasury consult marker over SSE (additive, SSE-only).
+      // REAL event — consultTreasury() runs on the next line. Drives the UI's
+      // seller-hop dip toward Treasury. Consult logic untouched.
+      sseBroadcaster.broadcast(`[treasury] consulted round=${state.currentRound} price=${data.pricePerUnit} neg=${state.negotiationId}`);
       const treasuryResult = await this.consultTreasury(
         state.negotiationId,
         data.pricePerUnit,
