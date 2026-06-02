@@ -1,0 +1,1518 @@
+{
+  "negotiationId": "NEG-1780318589089",
+  "perspective": "SELLER",
+  "outcome": "escalation",
+  "startedAt": "2026-06-01T12:57:23.927Z",
+  "generatedAt": "2026-06-01T12:58:18.493Z",
+  "selfProcessMode": {
+    "mode": "BASIC_SALES_QUOTING_1",
+    "resolvedCapabilities": {
+      "treasuryConsultation": true,
+      "inventoryLogisticsSubAgents": false,
+      "creditSubAgent": false,
+      "advisorMathAggregator": false,
+      "llmExecutiveJudgment": false,
+      "styleFramework": false,
+      "opponentStyleInference": false,
+      "autonomyLevels": false,
+      "perCounterpartyProfiles": false,
+      "customCommodityPdModels": false
+    },
+    "providerModes": {
+      "inventory": "demo",
+      "logistics": "demo",
+      "credit": "demo"
+    },
+    "evaluationContext": "live",
+    "resolvedFromEnv": {
+      "SELLER_RESPONSE_MODE": null,
+      "INVENTORY_MODE": null,
+      "LOGISTICS_MODE": null,
+      "CREDIT_MODE": null,
+      "EVALUATION_CONTEXT": null
+    }
+  },
+  "sellerResponseMode": null,
+  "parties": {
+    "self": {
+      "role": "SELLER",
+      "lei": "3358004DXAMRWRUIYJ05",
+      "legalEntityName": "JUPITER KNITTING COMPANY"
+    },
+    "counterparty": {
+      "role": "BUYER",
+      "lei": "54930012QJWZMYHNJW95",
+      "legalEntityName": "TOMMY HILFIGER EUROPE B.V."
+    }
+  },
+  "identity": {
+    "credentialMode": "vlei"
+  },
+  "agent": {
+    "self": {
+      "role": "SELLER",
+      "agentName": "jupiterSellerAgent",
+      "legalEntityName": "JUPITER KNITTING COMPANY",
+      "lei": "3358004DXAMRWRUIYJ05",
+      "oorOfficer": "Jupiter_Chief_Sales_Officer",
+      "agentAID": "EDg_nWqWWHpZE11VYVHWaTcXNNBgvTnkfqh5TSf18TNu"
+    },
+    "counterparty": {
+      "role": "BUYER",
+      "agentName": "tommyBuyerAgent",
+      "legalEntityName": "TOMMY HILFIGER EUROPE B.V.",
+      "lei": "54930012QJWZMYHNJW95",
+      "oorOfficer": "Tommy_Chief_Procurement_Officer",
+      "agentAID": "ECUxA94ZM7z4ba6zWb8TWSAkkYmhqaVnHnIeHUdScXBj"
+    }
+  },
+  "identityProof": {
+    "schemaVersion": 1,
+    "self": {
+      "credentialMode": "vlei",
+      "agentName": "jupiterSellerAgent",
+      "legalEntityName": "JUPITER KNITTING COMPANY",
+      "lei": "3358004DXAMRWRUIYJ05",
+      "registrationStatus": "ISSUED",
+      "entityStatus": "ACTIVE",
+      "country": "IN",
+      "countryName": "IN",
+      "legalForm": "A0PS",
+      "initialRegistrationDate": "2018-06-19T13:13:12Z",
+      "lastUpdateDate": "2025-05-29T05:18:01Z",
+      "nextRenewalDate": "2026-07-01T18:30:00Z",
+      "oorOfficer": "Jupiter_Chief_Sales_Officer",
+      "agentAID": "EDg_nWqWWHpZE11VYVHWaTcXNNBgvTnkfqh5TSf18TNu",
+      "oorHolderAID": "ENmfzIkovOh-7_SDNKNYq_vSnZJypXjqOa0xFsol6Dih",
+      "legalEntityAID": "EMyXAkouMiBv394bqhOCa2gnDHkG0ryhpBnDJn18XMxJ",
+      "qviAID": "ENkSU8oay8nAtxQdVl6OqgrDytH6IUQIgmNYbdfmIsEh",
+      "verificationPath": [
+        "GLEIF_ROOT → QVI",
+        "QVI → JUPITER KNITTING COMPANY → Chief Sales Officer → jupiterSellerAgent"
+      ],
+      "gleifSource": "GLEIF_API_LIVE",
+      "gleifFetchedAt": "2026-06-01T12:57:30.876Z",
+      "gleifRawResponseHash": "9423254c70f637682498fc46184b5c47a3a60a57b354851f91fe0449c309e38e"
+    },
+    "counterparty": {
+      "credentialMode": "vlei",
+      "agentName": "tommyBuyerAgent",
+      "legalEntityName": "TOMMY HILFIGER EUROPE B.V.",
+      "lei": "54930012QJWZMYHNJW95",
+      "registrationStatus": "ISSUED",
+      "entityStatus": "ACTIVE",
+      "country": "NL",
+      "countryName": "NL",
+      "legalForm": "54M6",
+      "initialRegistrationDate": "2012-12-17T19:10:00Z",
+      "lastUpdateDate": "2025-07-25T12:28:51Z",
+      "nextRenewalDate": "2026-09-18T00:00:00Z",
+      "oorOfficer": "Tommy_Chief_Procurement_Officer",
+      "agentAID": "ECUxA94ZM7z4ba6zWb8TWSAkkYmhqaVnHnIeHUdScXBj",
+      "oorHolderAID": "ENwng5eRDiE9zzhF_xtQ20V_Jhdvy2JRsJ66mVhjyJB6",
+      "legalEntityAID": "EBIbiU1IqHImahjp3865b9_DpttbEXLcXOkhrxu2x3EE",
+      "qviAID": "ENkSU8oay8nAtxQdVl6OqgrDytH6IUQIgmNYbdfmIsEh",
+      "verificationPath": [
+        "GLEIF_ROOT → QVI",
+        "QVI → TOMMY HILFIGER EUROPE B.V. → Chief Procurement Officer → tommyBuyerAgent"
+      ],
+      "gleifSource": "GLEIF_API_LIVE",
+      "gleifFetchedAt": "2026-06-01T12:57:32.357Z",
+      "gleifRawResponseHash": "03e0c6bdd1b9bdbeef95d217eb6fbb7287659026feadc5b0bfd672b749223f9e",
+      "verified": true,
+      "checksPerformed": [
+        "vlei-mode-acknowledged",
+        "agent-card-load:demo",
+        "lei-format-valid",
+        "gleif-lookup",
+        "registration-active",
+        "entity-active",
+        "keri-delegation-chain-verify",
+        "keri-script:DEEP-EXT"
+      ],
+      "warnings": [],
+      "errors": [],
+      "verifiedAt": "2026-06-01T12:57:33.724Z"
+    }
+  },
+  "messageSigningPosture": {
+    "schemaVersion": 1,
+    "tier": "SIGNED_HASH",
+    "tierDescription": "HASH_ENVELOPE + an Ed25519 signature over the KRAM canonical string (sender AID + ISO timestamp + SHA-256 payload digest), NOT the envelope hash. Proves the holder of the private key signed; key is not bound to a legal entity.",
+    "provider": "KramSigner",
+    "signingMode": "kram",
+    "capabilities": {
+      "tamperEvidenceOnPayload": true,
+      "tamperEvidenceOnEnvelope": true,
+      "replayProtection": true,
+      "stalenessProtection": true,
+      "cryptographicIdentity": true,
+      "leiBoundIdentity": false,
+      "keriKeyEventLog": false
+    },
+    "config": {
+      "maxMessageAgeMs": 300000,
+      "maxFutureSkewMs": 30000
+    },
+    "stats": {
+      "messagesSealed": 3,
+      "messagesVerified": 4,
+      "messagesRejected": 0,
+      "rejectionReasons": []
+    },
+    "honestNote": "Proves the holder of the signing key produced this message, but the signing key is not bound to the agent's legal entity via GLEIF. Non-repudiation only against the key holder."
+  },
+  "messageLog": [
+    {
+      "schemaVersion": 1,
+      "direction": "receive",
+      "round": 1,
+      "payloadKind": "OFFER",
+      "recordedAt": "2026-06-01T12:57:23.915Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "tommyBuyerAgent",
+        "receiverAgentId": "jupiterSellerAgent",
+        "counter": 1,
+        "timestamp": "2026-06-01T12:56:55.079Z",
+        "payloadHash": "e1edb8b199e41d755f13b1727080b18f29314941fe7cb46a61a4875325fd2e99",
+        "envelopeHash": "874be2d45f6c9963d4afe824e9f7afd35ec3f4a1be85496115b73a75ea340d9e",
+        "senderAid": "EBcNSNUyZtp-UqcqEHFTQWCY1ECSKDE6qAQBH2-vQKZ-",
+        "signature": "0BC8-ejrAcm5NeL3fkBH8LoLKA1icALmobo1kasnwQk0v09K9nAGf0Iv-TJQEZmoZANV3ZxdEIBUJWwXuR2ri8wA"
+      },
+      "verification": {
+        "valid": true
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "send",
+      "round": 1,
+      "payloadKind": "COUNTER_OFFER",
+      "recordedAt": "2026-06-01T12:57:47.095Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "jupiterSellerAgent",
+        "receiverAgentId": "tommyBuyerAgent",
+        "counter": 1,
+        "timestamp": "2026-06-01T12:57:47.095Z",
+        "payloadHash": "a9c25a0aa862551948c6abc31341fdc04cf4749b02f133c69cefb117a51d84ea",
+        "envelopeHash": "a554828e23c5ebd6980c446c89c98d09afd1d730e76d7dc16c3f0422744078d6",
+        "senderAid": "EPSgswivYhPbFehfRbuAJG_zsf_ACOas6EEfqYr79YQb",
+        "signature": "0BD2hYA0LyOYJgeQdJDKtcmQWPigUBfR-tCHthNc4_MuLx-IoNGKR_D2YEdjDaxBKA0uN0uQSGWPR-EN15Hz40kH"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "receive",
+      "round": 2,
+      "payloadKind": "COUNTER_OFFER",
+      "recordedAt": "2026-06-01T12:57:59.116Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "tommyBuyerAgent",
+        "receiverAgentId": "jupiterSellerAgent",
+        "counter": 2,
+        "timestamp": "2026-06-01T12:57:59.089Z",
+        "payloadHash": "e04fcd6de75d7eb33b126855aecbc84a6e839bee1079469019a9d4403a655943",
+        "envelopeHash": "9d60506b02c7b2f9e18ab302dcda020c378cb01169da72df859c46876083cc95",
+        "senderAid": "EBcNSNUyZtp-UqcqEHFTQWCY1ECSKDE6qAQBH2-vQKZ-",
+        "signature": "0BChO5POtFHXSL_QIq_cP48vc46DZyfvYjPQ6IaVituA-2Zyv9KY5CLS67x1C2BgI9G1mtZ-Au0jaMB34ZqYmY4K"
+      },
+      "verification": {
+        "valid": true
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "send",
+      "round": 2,
+      "payloadKind": "COUNTER_OFFER",
+      "recordedAt": "2026-06-01T12:58:05.292Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "jupiterSellerAgent",
+        "receiverAgentId": "tommyBuyerAgent",
+        "counter": 2,
+        "timestamp": "2026-06-01T12:58:05.291Z",
+        "payloadHash": "f2134a611844be5d5325862dc3341cac39ca3e5c2762865ec9173ff0c87d1385",
+        "envelopeHash": "59dfe28b82a788534b49db0d7ee9c2a6be7f8dc403a529a20f2a32709796e25d",
+        "senderAid": "EPSgswivYhPbFehfRbuAJG_zsf_ACOas6EEfqYr79YQb",
+        "signature": "0BCHYOL90nDZVQkq1SuWWrbKUuss2aqhmy-W5DjjAu0NYREfvbRg8FidDG6pY37PV75M-bIilK3bALMWQUOJ1DEC"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "receive",
+      "round": 3,
+      "payloadKind": "COUNTER_OFFER",
+      "recordedAt": "2026-06-01T12:58:12.911Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "tommyBuyerAgent",
+        "receiverAgentId": "jupiterSellerAgent",
+        "counter": 3,
+        "timestamp": "2026-06-01T12:58:12.874Z",
+        "payloadHash": "b63c3c89b41fc4cb55d5cd46fd80c5ac564be0247a7fb1eb8e71dcfb399407e8",
+        "envelopeHash": "c8538596e78d02fbe9ffedf92666dda33f82c6141f6a72540a12176fbf17bb86",
+        "senderAid": "EBcNSNUyZtp-UqcqEHFTQWCY1ECSKDE6qAQBH2-vQKZ-",
+        "signature": "0BAzuFkvhTQKksRZ0K2Xgtw7Sz0aP61fSSFNvGAXEXEdzr2R9fLMwAbOpkzI1JpcYy08oKjlbJ5MjqRAQOIGJxoG"
+      },
+      "verification": {
+        "valid": true
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "send",
+      "round": 3,
+      "payloadKind": "COUNTER_OFFER",
+      "recordedAt": "2026-06-01T12:58:16.244Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "jupiterSellerAgent",
+        "receiverAgentId": "tommyBuyerAgent",
+        "counter": 3,
+        "timestamp": "2026-06-01T12:58:16.233Z",
+        "payloadHash": "1ecdf040882bfccafa41dc972cb1bea852bca2fc4e7cfd213b3ed3d6f44ee9d5",
+        "envelopeHash": "d527e391f79a2f7203476032abc467e9be277f1cbef65aaee03dfe5e7b972582",
+        "senderAid": "EPSgswivYhPbFehfRbuAJG_zsf_ACOas6EEfqYr79YQb",
+        "signature": "0BB6zuaar81g93LGdUuUE0vJV--kWw29qJ55ommAgKd5bpfh1kBoq3WmcsjuOM4q6hJaAI1CmjDLPgdadKuhsoYO"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "receive",
+      "round": 3,
+      "payloadKind": "ESCALATION_NOTICE",
+      "recordedAt": "2026-06-01T12:58:18.428Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "tommyBuyerAgent",
+        "receiverAgentId": "jupiterSellerAgent",
+        "counter": 4,
+        "timestamp": "2026-06-01T12:58:18.423Z",
+        "payloadHash": "58bdd2680b6400b87c35a4812437404edf9c85c314f76f3db43f607307e0e784",
+        "envelopeHash": "4ea412ff045e263b11c59246fb5602116b17f9879bdcb0a5857ce988abc99c62",
+        "senderAid": "EBcNSNUyZtp-UqcqEHFTQWCY1ECSKDE6qAQBH2-vQKZ-",
+        "signature": "0BAFnIy-pCcOphIupaNRFc3Qag9t9DrmQ96IZkh-XztpERDMEdub4jQGlyTHh905SwtJFwPxcp3ZbNRrF-hdsSMF"
+      },
+      "verification": {
+        "valid": true
+      }
+    }
+  ],
+  "intent": {
+    "schemaVersion": 1,
+    "perspective": "SELLER",
+    "intentSource": "SCENARIO_DECLARED",
+    "scenarioId": "mode-l2-full-audit-cotton",
+    "scenarioTitle": "L2 mode — full audit",
+    "buyerIntent": {
+      "goal": "secure-supply",
+      "hardConstraints": {
+        "maxBudgetPerUnit": 420,
+        "minQuantity": 50000
+      },
+      "softPreferences": {
+        "targetPricePerUnit": 380,
+        "preferredPaymentTerms": "Net 30",
+        "relationshipWeight": 0.4
+      },
+      "style": "balanced",
+      "walkAwayBehavior": "escalate"
+    },
+    "sellerIntent": {
+      "goal": "fill-capacity",
+      "hardConstraints": {
+        "sellerResponseMode": "L2_EXECUTIVE_REASONER",
+        "minMarginPct": 5
+      },
+      "softPreferences": {
+        "targetMarginPct": 8,
+        "preferredPaymentTerms": "Net 30"
+      },
+      "style": "balanced",
+      "walkAwayBehavior": "escalate"
+    },
+    "situation": {
+      "product": "FAB-COTTON-180GSM",
+      "quantity": 50000,
+      "market": "normal"
+    },
+    "expectedOutcome": {
+      "shape": "PRICE_RANGE_CLOSE",
+      "likely": "3-round close at ~₹375–₹395/unit (closing band similar to BASIC; the AUDIT is where the modes differ). Audit JSON: extras.l2.consultations[] has 3 entries with treasury/inventory/logistics/credit advisor data; tacticsTrace[] shows the math-aggregator outputs per round; mathOverrides[] populated if Gemini's price ever fell outside the guardrail band.",
+      "possible": "May close in 2 rounds if Gemini is healthy and free-tier quota is fresh. usedFallback flag on tacticsTrace entries reveals which rounds used real LLM vs rule-based fallback.",
+      "failureMode": "If SELLER_RESPONSE_MODE in .env is set to BASIC_SALES_QUOTING_1 instead of L2_EXECUTIVE_REASONER, the scenario will still run but the audit's extras.l2 will be empty {} (BASIC path doesn't write L2 extras). Check the UI Settings card's 'Active' mode before running.",
+      "priceRange": {
+        "minPerUnit": 375,
+        "maxPerUnit": 395,
+        "currency": "INR"
+      }
+    },
+    "deviationFromIntent": {
+      "dimensions": [
+        {
+          "dimension": "outcomeShape",
+          "expected": "PRICE_RANGE_CLOSE",
+          "actual": "ESCALATED (ESCALATION_EXPECTED)",
+          "severity": "high",
+          "note": "Final negotiation status does not match the declared expectedOutcome.shape."
+        }
+      ],
+      "overallSeverity": "high"
+    }
+  },
+  "autonomy": {
+    "schemaVersion": 1,
+    "capabilitiesActive": {
+      "goalInterpretation": {
+        "active": true,
+        "justification": "Agent loads scenario via scenario-loader or parses CLI form via cli-parser without human relay."
+      },
+      "planning": {
+        "active": true,
+        "justification": "Buyer's decideAction and seller's L2 reasoner choose the round-by-round action sequence."
+      },
+      "toolInvocation": {
+        "active": true,
+        "justification": "Inventory / credit / logistics / treasury sub-agents and ACTUS contracts are invoked without per-call human approval."
+      },
+      "commitmentAuthority": {
+        "active": true,
+        "justification": "Buyer auto-commits the PO/Invoice on an ACCEPT_OFFER without human approval."
+      },
+      "peerCommunication": {
+        "active": true,
+        "justification": "Buyer↔seller and both↔treasury communicate directly over A2A without human relay."
+      },
+      "learningFromOutcome": {
+        "active": false,
+        "justification": "No per-deal feedback loop updates agent parameters today.",
+        "deferredTo": "L4_LEARNED_PROFILES_AND_PD (out of v6 audit scope)"
+      }
+    },
+    "humanOversightPosition": "HOOTL_with_guardrails",
+    "guardrails": [
+      "maxRounds=3",
+      "treasury-ACTUS-veto",
+      "applySellerConstraints"
+    ],
+    "commitGate": {
+      "state": "NOT_REQUIRED",
+      "description": "No human-approval gate exists in code today. Agent commits autonomously; wouldFireAt[] records events a future gate could have caught.",
+      "wouldFireAt": [
+        {
+          "eventType": "TREASURY_VETO",
+          "round": 1,
+          "timestamp": "2026-06-01T12:57:45.623Z",
+          "triggerSource": "seller-agent.applyTreasuryConstraint",
+          "details": "Treasury ACTUS rejected price 269. failReasons=[\"Gap cash ₹-1,54,30,000 < safety threshold ₹3,00,000\",\"Net profit negative: ₹-32,43,036 (after ₹1,63,036 financing cost)\",\"NPV negative: ₹-8,14,007\"] minViablePrice=335 npvOfDeal=-814007 netProfit=-3243036",
+          "severity": "high",
+          "wouldRequireApproval": true
+        },
+        {
+          "eventType": "GUARDRAIL_OVERRIDE",
+          "round": 2,
+          "timestamp": "2026-06-01T12:58:04.076Z",
+          "triggerSource": "seller-agent.applySellerConstraints",
+          "details": "Legacy path: applySellerConstraints overrode LLM proposal. llmProposed={\"action\":\"COUNTER\",\"price\":330,\"reasoning\":\"LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback\"} clampedTo=action=COUNTER price=355",
+          "severity": "low",
+          "wouldRequireApproval": false
+        },
+        {
+          "eventType": "TREASURY_VETO",
+          "round": 2,
+          "timestamp": "2026-06-01T12:58:04.076Z",
+          "triggerSource": "seller-agent.applyTreasuryConstraint",
+          "details": "Treasury ACTUS rejected price 330. failReasons=[\"Gap cash ₹-1,54,30,000 < safety threshold ₹3,00,000\",\"Net profit negative: ₹-1,93,036 (after ₹1,63,036 financing cost)\"] minViablePrice=335 npvOfDeal=2749843 netProfit=-193036",
+          "severity": "high",
+          "wouldRequireApproval": true
+        },
+        {
+          "eventType": "TREASURY_VETO",
+          "round": 3,
+          "timestamp": "2026-06-01T12:58:15.377Z",
+          "triggerSource": "seller-agent.applyTreasuryConstraint",
+          "details": "Treasury ACTUS rejected price 355. failReasons=[\"Gap cash ₹-1,54,30,000 < safety threshold ₹3,00,000\"] minViablePrice=335 npvOfDeal=4210437 netProfit=1056964",
+          "severity": "high",
+          "wouldRequireApproval": true
+        },
+        {
+          "eventType": "MAX_ROUNDS_REACHED",
+          "round": 3,
+          "timestamp": "2026-06-01T12:58:18.471Z",
+          "triggerSource": "seller-agent.handleEscalationNotice",
+          "details": "Buyer ESCALATION_NOTICE received. buyerFinalOffer=355 sellerFinalOffer=355 gap=0. buyerReportPath=C:\\SATHYA\\CHAINAIM3003\\mcp-servers\\DynDiscounting\\DynDisc4-ent1\\A2A\\js\\src\\audits\\2026-06-01\\NEG-1780318589089\\NEG-1780318589089_escalation_BUYER.txt",
+          "severity": "high",
+          "wouldRequireApproval": true
+        }
+      ],
+      "eventCounts": {
+        "TREASURY_VETO": 3,
+        "MAX_ROUNDS_REACHED": 1,
+        "COUNTERPARTY_REJECT_FINAL": 0,
+        "GUARDRAIL_OVERRIDE": 1
+      }
+    }
+  },
+  "thinkCycleTraceScope": "seller-only",
+  "thinkCycleTrace": [
+    {
+      "round": 1,
+      "mode": "BASIC_SALES_QUOTING_1",
+      "steps": [
+        {
+          "stepNumber": 4,
+          "stepName": "geminiCall",
+          "gen_ai.system": "gemini",
+          "gen_ai.request.model": "gemini-2.5-flash",
+          "gen_ai.usage.input_tokens": 689,
+          "gen_ai.usage.output_tokens": 60,
+          "gen_ai.usage.total_tokens": 1839,
+          "gemini.latencyMs": 7930,
+          "gemini.decisionPath": "GEMINI_OK",
+          "gemini.retries": 0,
+          "gemini.estimatedCostUSD": 0.00035670000000000005,
+          "prompt.hash": "4085b710eb84bf1dd2e74caefb9158d91f5cbf883df628de9221eac626ff7f12",
+          "prompt.text": "You are negotiating a trade deal as the SELLER.\n\nCURRENT SITUATION:\n- Round: 1 of 3 \n- Quantity: 50000 units\n\n- Their last offer : ₹269/unit\n\nLIVE MARKET CONDITIONS (L4 — use these to reason about pricing):\n- SOFR rate        : 5.24%  (SIMULATED)\n- Cotton price     : $0.82/lb  (affects production cost)\n- Eff. borrow rate : 6.13%  (working capital cost)\n- Implication      : Higher cotton → your real production cost is higher. Higher borrowing rate → Net-30 gap is expensive to finance. Price to protect actual margin.\n\n\nYOUR CONSTRAINTS:\n- Margin Price: ₹355/unit (NEVER go below this - you lose money)\n- Target Price: ₹385/unit (ideal outcome with good profit)\n- Goal: Maximize profit while closing the deal\n\nSTRATEGIC CONSIDERATIONS:\n- First impressions matter - set the tone\n- Start higher to anchor expectations\n- Don't be too extreme or you'll lose credibility\n\nDECISION ANALYSIS:\n\n1. Their offer (₹269) vs your constraints:\n   - ✗ At or below minimum floor (MUST REJECT or COUNTER)\n   - Profit: ₹-86/unit (-24.2%)\n   - NOTE: ₹355/unit is your MINIMUM — any offer at or below this has zero or negative profit\n\n2. Gap analysis: (no prior offer)\n\n3. Should you ACCEPT or make a COUNTER-OFFER?\n   - If ACCEPT: Explain why this is the right price\n   - If COUNTER: Calculate a strategic new price that:\n     * Moves toward their offer (show flexibility)\n     * Stays above margin\n     * Signals you're serious about closing\n\nRESPOND WITH JSON ONLY (no other text):\n{\n  \"action\": \"ACCEPT\" or \"COUNTER\" or \"REJECT\",\n  \"price\": <number if COUNTER, omit if ACCEPT/REJECT>,\n  \"reasoning\": \"<1-2 sentence explanation of your strategic thinking>\",\n  \"confidence\": <0.0 to 1.0 how confident you are in this decision>\n}\n\nExample responses:\n{\"action\": \"ACCEPT\", \"reasoning\": \"Their offer of ₹360 is within budget and further negotiation risks deal failure in final round\", \"confidence\": 0.85}\n{\"action\": \"COUNTER\", \"price\": 340, \"reasoning\": \"Moving up from ₹320 to ₹340 shows flexibility while staying well below budget, testing their price sensitivity\", \"confidence\": 0.75}\n{\"action\": \"REJECT\", \"reasoning\": \"Their offer of ₹330 is below our margin of ₹350, accepting would result in a loss\", \"confidence\": 1.0}"
+        },
+        {
+          "stepNumber": 5,
+          "stepName": "guardrails",
+          "llmProposed": {
+            "action": "COUNTER",
+            "price": 390
+          },
+          "finalAfterGuardrails": {
+            "action": "COUNTER",
+            "price": 390
+          },
+          "overrideApplied": true,
+          "overrideSource": "treasuryConstraint"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "mode": "BASIC_SALES_QUOTING_1",
+      "steps": [
+        {
+          "stepNumber": 4,
+          "stepName": "geminiCall",
+          "gen_ai.system": "gemini",
+          "gen_ai.request.model": "gemini-2.5-flash",
+          "gemini.latencyMs": 3223,
+          "gemini.decisionPath": "GEMINI_ERROR_RULES_FALLBACK",
+          "gemini.retries": 3,
+          "prompt.hash": "b0bb3171045b8c6c74b5b8b8fafcd5fc8bed36890fd53d5686952b22106a87e2",
+          "prompt.text": "You are negotiating a trade deal as the SELLER.\n\nCURRENT SITUATION:\n- Round: 2 of 3 \n- Quantity: 50000 units\n- Your last offer  : ₹390/unit\n- Their last offer : ₹330/unit\n\nLIVE MARKET CONDITIONS (L4 — use these to reason about pricing):\n- SOFR rate        : 5.24%  (SIMULATED)\n- Cotton price     : $0.82/lb  (affects production cost)\n- Eff. borrow rate : 6.13%  (working capital cost)\n- Implication      : Higher cotton → your real production cost is higher. Higher borrowing rate → Net-30 gap is expensive to finance. Price to protect actual margin.\n\n\nNEGOTIATION HISTORY:\n  Round 1: Buyer ₹269 → Seller ₹390\n\nYOUR CONSTRAINTS:\n- Margin Price: ₹355/unit (NEVER go below this - you lose money)\n- Target Price: ₹385/unit (ideal outcome with good profit)\n- Goal: Maximize profit while closing the deal\n\nSTRATEGIC CONSIDERATIONS:\n- Middle rounds are for convergence\n- Show flexibility but don't concede too quickly\n- Analyze their pattern: Are they moving toward you?\n- Calculate: Will we reach agreement by round 3?\n\nDECISION ANALYSIS:\n\n1. Their offer (₹330) vs your constraints:\n   - ✗ At or below minimum floor (MUST REJECT or COUNTER)\n   - Profit: ₹-25/unit (-7.0%)\n   - NOTE: ₹355/unit is your MINIMUM — any offer at or below this has zero or negative profit\n   - Current gap: ₹60\n   - You need to decrease by 60 to meet their price\n\n2. Gap analysis:\n   - Current gap: ₹60\n   - You need to decrease by 60 to meet their price\n\n3. Should you ACCEPT or make a COUNTER-OFFER?\n   - If ACCEPT: Explain why this is the right price\n   - If COUNTER: Calculate a strategic new price that:\n     * Moves toward their offer (show flexibility)\n     * Stays above margin\n     * Signals you're serious about closing\n\nRESPOND WITH JSON ONLY (no other text):\n{\n  \"action\": \"ACCEPT\" or \"COUNTER\" or \"REJECT\",\n  \"price\": <number if COUNTER, omit if ACCEPT/REJECT>,\n  \"reasoning\": \"<1-2 sentence explanation of your strategic thinking>\",\n  \"confidence\": <0.0 to 1.0 how confident you are in this decision>\n}\n\nExample responses:\n{\"action\": \"ACCEPT\", \"reasoning\": \"Their offer of ₹360 is within budget and further negotiation risks deal failure in final round\", \"confidence\": 0.85}\n{\"action\": \"COUNTER\", \"price\": 340, \"reasoning\": \"Moving up from ₹320 to ₹340 shows flexibility while staying well below budget, testing their price sensitivity\", \"confidence\": 0.75}\n{\"action\": \"REJECT\", \"reasoning\": \"Their offer of ₹330 is below our margin of ₹350, accepting would result in a loss\", \"confidence\": 1.0}"
+        },
+        {
+          "stepNumber": 5,
+          "stepName": "guardrails",
+          "llmProposed": {
+            "action": "COUNTER",
+            "price": 330
+          },
+          "finalAfterGuardrails": {
+            "action": "COUNTER",
+            "price": 355
+          },
+          "overrideApplied": true,
+          "overrideReason": "LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback (protected margin floor)",
+          "overrideSource": "applySellerConstraints"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "mode": "BASIC_SALES_QUOTING_1",
+      "steps": [
+        {
+          "stepNumber": 4,
+          "stepName": "geminiCall",
+          "gen_ai.system": "gemini",
+          "gen_ai.request.model": "gemini-2.5-flash",
+          "gemini.latencyMs": 1437,
+          "gemini.decisionPath": "GEMINI_ERROR_RULES_FALLBACK",
+          "gemini.retries": 3,
+          "prompt.hash": "4b82184223733a9302f2e4085385c6adb17cea80f5cc1358ecea489840e9863c",
+          "prompt.text": "You are negotiating a trade deal as the SELLER.\n\nCURRENT SITUATION:\n- Round: 3 of 3 (FINAL ROUND)\n- Quantity: 50000 units\n- Your last offer  : ₹355/unit\n- Their last offer : ₹355/unit\n\nLIVE MARKET CONDITIONS (L4 — use these to reason about pricing):\n- SOFR rate        : 5.24%  (SIMULATED)\n- Cotton price     : $0.82/lb  (affects production cost)\n- Eff. borrow rate : 6.13%  (working capital cost)\n- Implication      : Higher cotton → your real production cost is higher. Higher borrowing rate → Net-30 gap is expensive to finance. Price to protect actual margin.\n\n\nNEGOTIATION HISTORY:\n  Round 1: Buyer ₹269 → Seller ₹390\n  Round 2: Buyer ₹330 → Seller ₹355\n\nYOUR CONSTRAINTS:\n- Margin Price: ₹355/unit (NEVER go below this - you lose money)\n- Target Price: ₹385/unit (ideal outcome with good profit)\n- Goal: Maximize profit while closing the deal\n\nSTRATEGIC CONSIDERATIONS:\n- THIS IS THE FINAL ROUND - deal will fail if not accepted\n- Consider: Is this the best offer you'll get?\n- Accepting a \"good enough\" deal is better than no deal\n- If their offer is STRICTLY ABOVE ₹355 (your minimum floor), you may accept\n- NEVER accept at exactly ₹355 — that is zero profit\n- Any deal with at least ₹1 profit is worth taking in the final round\n\nDECISION ANALYSIS:\n\n1. Their offer (₹355) vs your constraints:\n   - ✗ At or below minimum floor (MUST REJECT or COUNTER)\n   - Profit: ₹0/unit (0.0%)\n   - NOTE: ₹355/unit is your MINIMUM — any offer at or below this has zero or negative profit\n   - Current gap: ₹0\n   - You need to decrease by 0 to meet their price\n\n2. Gap analysis:\n   - Current gap: ₹0\n   - You need to decrease by 0 to meet their price\n\n3. Should you ACCEPT or make a COUNTER-OFFER?\n   - If ACCEPT: Explain why this is the right price\n   - If COUNTER: Calculate a strategic new price that:\n     * Moves toward their offer (show flexibility)\n     * Stays above margin\n     * Signals you're serious about closing\n\nRESPOND WITH JSON ONLY (no other text):\n{\n  \"action\": \"ACCEPT\" or \"COUNTER\" or \"REJECT\",\n  \"price\": <number if COUNTER, omit if ACCEPT/REJECT>,\n  \"reasoning\": \"<1-2 sentence explanation of your strategic thinking>\",\n  \"confidence\": <0.0 to 1.0 how confident you are in this decision>\n}\n\nExample responses:\n{\"action\": \"ACCEPT\", \"reasoning\": \"Their offer of ₹360 is within budget and further negotiation risks deal failure in final round\", \"confidence\": 0.85}\n{\"action\": \"COUNTER\", \"price\": 340, \"reasoning\": \"Moving up from ₹320 to ₹340 shows flexibility while staying well below budget, testing their price sensitivity\", \"confidence\": 0.75}\n{\"action\": \"REJECT\", \"reasoning\": \"Their offer of ₹330 is below our margin of ₹350, accepting would result in a loss\", \"confidence\": 1.0}"
+        },
+        {
+          "stepNumber": 5,
+          "stepName": "guardrails",
+          "llmProposed": {
+            "action": "COUNTER",
+            "price": 355
+          },
+          "finalAfterGuardrails": {
+            "action": "COUNTER",
+            "price": 355
+          },
+          "overrideApplied": true,
+          "overrideSource": "treasuryConstraint"
+        }
+      ]
+    }
+  ],
+  "delegationChainScope": "seller-only",
+  "delegationChain": [
+    {
+      "round": 1,
+      "stepName": "treasury-consultation",
+      "decidedBy": "JupiterTreasuryAgent",
+      "onAuthorityOf": "Chief Audit Officer",
+      "authorityEnvelope": {
+        "description": "Treasury validates ACTUS PAM cashflow + NPV + safety threshold",
+        "limits": {
+          "paymentTermsDays": 30
+        }
+      },
+      "outcome": {
+        "approved": false,
+        "npvOfDeal": -814007,
+        "netProfit": -3243036,
+        "minViablePrice": 335,
+        "failReasons": [
+          "Gap cash ₹-1,54,30,000 < safety threshold ₹3,00,000",
+          "Net profit negative: ₹-32,43,036 (after ₹1,63,036 financing cost)",
+          "NPV negative: ₹-8,14,007"
+        ]
+      },
+      "rationale": "Validate cash position + profitability at the proposed price (only sub-agent BASIC mode calls)",
+      "dcc": {
+        "propertiesEmitted": 4,
+        "propertiesFullSpec": 7,
+        "spec": "FRAMEWORK-V2 §8 (4 of 7)",
+        "deferredReason": "[DCC-2026] Patil arxiv 2604.02767 not accessible at iter-4 lock time (2026-05-25). Remaining 3 properties to be added in a future addendum once the spec is read."
+      },
+      "euAiActArticle14": {
+        "monitorability": true,
+        "traceability": true,
+        "interventionPossible": false,
+        "overridePossible": false,
+        "attributesEmitted": 4,
+        "note": "Honest current-state booleans per ITERATION-PLAN Iter 4 T5. Article 14 as a regulation defines additional attributes; those are deferred until the code supports intervention and override paths."
+      },
+      "signedAt": "2026-06-01T12:58:18.492Z",
+      "signature": {
+        "kind": "HMAC",
+        "value": "893218417c07d7d40cd1efb35f4875557bb66f0c65736a0456a675a59c696583",
+        "signedAt": "2026-06-01T12:58:18.492Z"
+      }
+    },
+    {
+      "round": 2,
+      "stepName": "treasury-consultation",
+      "decidedBy": "JupiterTreasuryAgent",
+      "onAuthorityOf": "Chief Audit Officer",
+      "authorityEnvelope": {
+        "description": "Treasury validates ACTUS PAM cashflow + NPV + safety threshold",
+        "limits": {
+          "paymentTermsDays": 30
+        }
+      },
+      "outcome": {
+        "approved": false,
+        "npvOfDeal": 2749843,
+        "netProfit": -193036,
+        "minViablePrice": 335,
+        "failReasons": [
+          "Gap cash ₹-1,54,30,000 < safety threshold ₹3,00,000",
+          "Net profit negative: ₹-1,93,036 (after ₹1,63,036 financing cost)"
+        ]
+      },
+      "rationale": "Validate cash position + profitability at the proposed price (only sub-agent BASIC mode calls)",
+      "dcc": {
+        "propertiesEmitted": 4,
+        "propertiesFullSpec": 7,
+        "spec": "FRAMEWORK-V2 §8 (4 of 7)",
+        "deferredReason": "[DCC-2026] Patil arxiv 2604.02767 not accessible at iter-4 lock time (2026-05-25). Remaining 3 properties to be added in a future addendum once the spec is read."
+      },
+      "euAiActArticle14": {
+        "monitorability": true,
+        "traceability": true,
+        "interventionPossible": false,
+        "overridePossible": false,
+        "attributesEmitted": 4,
+        "note": "Honest current-state booleans per ITERATION-PLAN Iter 4 T5. Article 14 as a regulation defines additional attributes; those are deferred until the code supports intervention and override paths."
+      },
+      "signedAt": "2026-06-01T12:58:18.492Z",
+      "signature": {
+        "kind": "HMAC",
+        "value": "71753a4d95f18e93cd3a62463c47d892e303743f39f45c6584fc39368914ee79",
+        "signedAt": "2026-06-01T12:58:18.492Z"
+      }
+    },
+    {
+      "round": 3,
+      "stepName": "treasury-consultation",
+      "decidedBy": "JupiterTreasuryAgent",
+      "onAuthorityOf": "Chief Audit Officer",
+      "authorityEnvelope": {
+        "description": "Treasury validates ACTUS PAM cashflow + NPV + safety threshold",
+        "limits": {
+          "paymentTermsDays": 30
+        }
+      },
+      "outcome": {
+        "approved": false,
+        "npvOfDeal": 4210437,
+        "netProfit": 1056964,
+        "minViablePrice": 335,
+        "failReasons": [
+          "Gap cash ₹-1,54,30,000 < safety threshold ₹3,00,000"
+        ]
+      },
+      "rationale": "Validate cash position + profitability at the proposed price (only sub-agent BASIC mode calls)",
+      "dcc": {
+        "propertiesEmitted": 4,
+        "propertiesFullSpec": 7,
+        "spec": "FRAMEWORK-V2 §8 (4 of 7)",
+        "deferredReason": "[DCC-2026] Patil arxiv 2604.02767 not accessible at iter-4 lock time (2026-05-25). Remaining 3 properties to be added in a future addendum once the spec is read."
+      },
+      "euAiActArticle14": {
+        "monitorability": true,
+        "traceability": true,
+        "interventionPossible": false,
+        "overridePossible": false,
+        "attributesEmitted": 4,
+        "note": "Honest current-state booleans per ITERATION-PLAN Iter 4 T5. Article 14 as a regulation defines additional attributes; those are deferred until the code supports intervention and override paths."
+      },
+      "signedAt": "2026-06-01T12:58:18.492Z",
+      "signature": {
+        "kind": "HMAC",
+        "value": "abfeff4e0796e45a2eba6f30456c2f9de4a5a32f1526f2591a6781886e3a6097",
+        "signedAt": "2026-06-01T12:58:18.492Z"
+      }
+    }
+  ],
+  "negotiation": {
+    "roundsUsed": 3,
+    "maxRounds": 3,
+    "finalPrice": 355,
+    "quantity": 50000,
+    "deliveryDate": "2026-07-31",
+    "paymentTerms": "Net 30",
+    "priceTrail": [
+      {
+        "round": 1,
+        "buyer": 269,
+        "seller": 390,
+        "gap": 121
+      },
+      {
+        "round": 2,
+        "buyer": 330,
+        "seller": 355,
+        "gap": 25
+      },
+      {
+        "round": 3,
+        "buyer": 355,
+        "seller": 355,
+        "gap": 0
+      }
+    ]
+  },
+  "outcomeQuality": {
+    "closed": false,
+    "closedPrice": 355,
+    "buyerMax": 400,
+    "sellerMin": 350,
+    "currency": "INR",
+    "IR": {
+      "buyerIR": 45,
+      "sellerIR": 5,
+      "bothIR": true
+    },
+    "ZOPA": {
+      "low": 350,
+      "high": 400,
+      "width": 50,
+      "wasFeasible": true
+    },
+    "NBS": {
+      "fairPrice": 375,
+      "deviationFromNBS": -20,
+      "deviationPercent": -80
+    },
+    "surplusSplit": {
+      "buyerShare": 0.9,
+      "sellerShare": 0.1,
+      "totalSurplus": 2500000
+    },
+    "flags": {
+      "agreementTrap": false,
+      "sellerCapturedMost": false,
+      "buyerCapturedMost": true,
+      "outsideZOPA": false
+    },
+    "summary": "Deal escalated at ₹355, ₹20 below NBS fair price of ₹375. Buyer captured 90% of surplus.",
+    "computedAt": "2026-06-01T12:58:18.477Z"
+  },
+  "constraintDisclosure": {
+    "selfReservationPrice": {
+      "value": 350,
+      "source": "own-config",
+      "currency": "INR"
+    },
+    "fallbackUsed": {
+      "value": 400,
+      "source": "demo-constant",
+      "reason": "counterparty did not disclose buyerMax in PURCHASE_ORDER (older client or disclosure suppressed)"
+    }
+  },
+  "decisions": [
+    {
+      "round": 1,
+      "timestamp": "2026-06-01T12:57:45.623Z",
+      "perspective": "SELLER",
+      "incomingOffer": 269,
+      "llmProposal": {
+        "action": "COUNTER",
+        "price": 390,
+        "reasoning": "Their offer is significantly below our production cost and minimum margin. We are setting a strong initial anchor in Round 1 to reflect current market conditions and protect our profitability.",
+        "usedFallback": false
+      },
+      "finalDecision": {
+        "action": "COUNTER",
+        "price": 390
+      },
+      "marketContext": {
+        "sofrRate": 0.052388361519073535,
+        "sofrSource": "SIMULATED",
+        "effectiveBorrowingRate": 0.06131,
+        "cottonPricePerLb": 0.8245742236810601,
+        "capturedAt": "2026-06-01T12:57:45.623Z"
+      },
+      "treasuryOverride": {
+        "approved": false,
+        "minViablePrice": 335,
+        "failReasons": [
+          "Gap cash ₹-1,54,30,000 < safety threshold ₹3,00,000",
+          "Net profit negative: ₹-32,43,036 (after ₹1,63,036 financing cost)",
+          "NPV negative: ₹-8,14,007"
+        ],
+        "npvOfDeal": -814007,
+        "netProfit": -3243036
+      }
+    },
+    {
+      "round": 2,
+      "timestamp": "2026-06-01T12:58:04.076Z",
+      "perspective": "SELLER",
+      "incomingOffer": 330,
+      "llmProposal": {
+        "action": "COUNTER",
+        "price": 330,
+        "reasoning": "LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback",
+        "usedFallback": false
+      },
+      "constraintAdjustment": {
+        "action": "COUNTER",
+        "price": 355,
+        "reasoning": "LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback (protected margin floor)"
+      },
+      "finalDecision": {
+        "action": "COUNTER",
+        "price": 355
+      },
+      "marketContext": {
+        "sofrRate": 0.052388361519073535,
+        "sofrSource": "SIMULATED",
+        "effectiveBorrowingRate": 0.06131,
+        "cottonPricePerLb": 0.8245742236810601,
+        "capturedAt": "2026-06-01T12:58:04.076Z"
+      },
+      "treasuryOverride": {
+        "approved": false,
+        "minViablePrice": 335,
+        "failReasons": [
+          "Gap cash ₹-1,54,30,000 < safety threshold ₹3,00,000",
+          "Net profit negative: ₹-1,93,036 (after ₹1,63,036 financing cost)"
+        ],
+        "npvOfDeal": 2749843,
+        "netProfit": -193036
+      }
+    },
+    {
+      "round": 3,
+      "timestamp": "2026-06-01T12:58:15.376Z",
+      "perspective": "SELLER",
+      "incomingOffer": 355,
+      "llmProposal": {
+        "action": "COUNTER",
+        "price": 355,
+        "reasoning": "LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback",
+        "usedFallback": false
+      },
+      "finalDecision": {
+        "action": "COUNTER",
+        "price": 355
+      },
+      "marketContext": {
+        "sofrRate": 0.052388361519073535,
+        "sofrSource": "SIMULATED",
+        "effectiveBorrowingRate": 0.06131,
+        "cottonPricePerLb": 0.8245742236810601,
+        "capturedAt": "2026-06-01T12:58:15.376Z"
+      },
+      "treasuryOverride": {
+        "approved": false,
+        "minViablePrice": 335,
+        "failReasons": [
+          "Gap cash ₹-1,54,30,000 < safety threshold ₹3,00,000"
+        ],
+        "npvOfDeal": 4210437,
+        "netProfit": 1056964
+      }
+    }
+  ],
+  "treasury": {
+    "round": 3,
+    "priceQueried": 355,
+    "approved": false,
+    "npvOfDeal": 4210437,
+    "netProfit": 1056964,
+    "projectedMinBalance": -15430000,
+    "safetyThreshold": 300000,
+    "workingCapitalCost": 163036,
+    "minViablePrice": 335,
+    "overrideApplied": false
+  },
+  "extras": {
+    "buyerFinalOffer": 355,
+    "sellerFinalOffer": 355,
+    "gap": 0,
+    "buyerReportPath": "C:\\SATHYA\\CHAINAIM3003\\mcp-servers\\DynDiscounting\\DynDisc4-ent1\\A2A\\js\\src\\audits\\2026-06-01\\NEG-1780318589089\\NEG-1780318589089_escalation_BUYER.txt"
+  },
+  "logs": [
+    {
+      "round": 1,
+      "messageType": "OFFER",
+      "from": "BUYER",
+      "offeredPrice": 269,
+      "decision": "OFFER",
+      "timestamp": "2026-06-01T12:57:33.725Z",
+      "negotiationId": "NEG-1780318589089"
+    },
+    {
+      "round": 1,
+      "messageType": "COUNTER_OFFER",
+      "from": "SELLER",
+      "offeredPrice": 390,
+      "previousPrice": 269,
+      "priceMovement": 121,
+      "priceMovementPercent": 44.98141263940521,
+      "gap": 121,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "Their offer is significantly below our production cost and minimum margin. We are setting a strong initial anchor in Round 1 to reflect current market conditions and protect our profitability.",
+      "timestamp": "2026-06-01T12:57:45.624Z",
+      "negotiationId": "NEG-1780318589089"
+    },
+    {
+      "round": 2,
+      "messageType": "COUNTER_OFFER",
+      "from": "BUYER",
+      "offeredPrice": 330,
+      "previousPrice": 390,
+      "priceMovement": -60,
+      "priceMovementPercent": -15.384615384615385,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "Moving significantly to our target price of ₹330 demonstrates flexibility and a strong willingness to close the deal, while leaving a balanced gap for the final round.",
+      "timestamp": "2026-06-01T12:58:00.795Z",
+      "negotiationId": "NEG-1780318589089"
+    },
+    {
+      "round": 2,
+      "messageType": "COUNTER_OFFER",
+      "from": "SELLER",
+      "offeredPrice": 355,
+      "previousPrice": 390,
+      "priceMovement": -35,
+      "priceMovementPercent": -8.974358974358974,
+      "gap": 25,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback (protected margin floor)",
+      "timestamp": "2026-06-01T12:58:04.076Z",
+      "negotiationId": "NEG-1780318589089"
+    },
+    {
+      "round": 3,
+      "messageType": "COUNTER_OFFER",
+      "from": "BUYER",
+      "offeredPrice": 355,
+      "previousPrice": 355,
+      "priceMovement": 0,
+      "priceMovementPercent": 0,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback",
+      "timestamp": "2026-06-01T12:58:13.919Z",
+      "negotiationId": "NEG-1780318589089"
+    },
+    {
+      "round": 3,
+      "messageType": "COUNTER_OFFER",
+      "from": "SELLER",
+      "offeredPrice": 355,
+      "previousPrice": 355,
+      "priceMovement": 0,
+      "priceMovementPercent": 0,
+      "gap": 0,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback",
+      "timestamp": "2026-06-01T12:58:15.377Z",
+      "negotiationId": "NEG-1780318589089"
+    }
+  ],
+  "frameworkMetrics": {
+    "frameworkMetricsScope": "both",
+    "cost": {
+      "totalCostUSD": 0.0003567,
+      "currency": "USD",
+      "byModel": {
+        "gemini-2.5-flash": {
+          "calls": 3,
+          "inputTokens": 689,
+          "outputTokens": 60,
+          "costUSD": 0.0003567
+        }
+      },
+      "perCallSource": "shared/llm-client.ts estimateCostUSD (GEMINI_PRICING table dated May 2026)"
+    },
+    "outcome": {
+      "closed": false,
+      "finalPrice": 355,
+      "currency": "INR",
+      "surplusCapturedShare": 0.1
+    },
+    "riskAvoided": {
+      "treasuryVetoes": 3,
+      "maxRoundsReached": 1,
+      "counterpartyRejectFinal": 0,
+      "guardrailOverrides": 1,
+      "source": "/autonomy/commitGate/eventCounts"
+    }
+  },
+  "selfCheck": {
+    "selfCheckScope": "both",
+    "overallVerdict": "ON_TRACK",
+    "checks": [
+      {
+        "name": "identityVerified",
+        "passed": true,
+        "ref": "/identityProof"
+      },
+      {
+        "name": "messageIntegrityIntact",
+        "passed": true,
+        "ref": "/messageSigningPosture"
+      },
+      {
+        "name": "intentDeclaredAndTracked",
+        "passed": true,
+        "ref": "/intent"
+      },
+      {
+        "name": "reasoningAuditable",
+        "passed": true,
+        "ref": "/thinkCycleTrace"
+      },
+      {
+        "name": "delegationAttested",
+        "passed": true,
+        "ref": "/delegationChain"
+      }
+    ]
+  },
+  "compliance": {
+    "complianceScope": "both",
+    "evidenceRefConvention": "RFC-6901 JSON Pointers, extended with non-standard wildcard '*' meaning 'every index in the array at the parent path'. A reader expanding a wildcard MUST emit one concrete pointer per array index found on the audit being inspected; a wildcard pointing into an absent array (e.g. /thinkCycleTrace/* on a buyer audit) resolves to zero concrete pointers, which is the honest cross-side state per iter-5 addendum Item 0.",
+    "frameworks": [
+      {
+        "id": "NIST_AI_RMF",
+        "version": "1.0",
+        "mappedTo": [
+          "GOVERN-1.1",
+          "MEASURE-2.7",
+          "MANAGE-4.1"
+        ],
+        "evidenceRefs": [
+          "/autonomy",
+          "/decisions",
+          "/intent/deviationFromIntent"
+        ]
+      },
+      {
+        "id": "ISO_42001",
+        "version": "2023",
+        "mappedTo": [
+          "6.1.2",
+          "8.2",
+          "9.1"
+        ],
+        "evidenceRefs": [
+          "/autonomy/capabilitiesActive",
+          "/decisions"
+        ]
+      },
+      {
+        "id": "EU_AI_Act_Article_14",
+        "version": "Reg 2024/1689",
+        "mappedTo": [
+          "human-oversight"
+        ],
+        "evidenceRefs": [
+          "/delegationChain/*/euAiActArticle14",
+          "/autonomy/humanOversightPosition"
+        ]
+      },
+      {
+        "id": "DCC_2026",
+        "version": "Patil arXiv 2604.02767 (deferred)",
+        "mappedTo": [
+          "4-of-7 properties per iter-4 Item 5"
+        ],
+        "evidenceRefs": [
+          "/delegationChain/*/dcc"
+        ]
+      },
+      {
+        "id": "OpenTelemetry_GenAI",
+        "version": "semconv v1.28",
+        "mappedTo": [
+          "gen_ai.system",
+          "gen_ai.request.model",
+          "gen_ai.usage.*"
+        ],
+        "evidenceRefs": [
+          "/thinkCycleTrace/*/steps"
+        ]
+      },
+      {
+        "id": "VERIFAGENT_2025",
+        "version": "deferred (post-WEDGE1)",
+        "mappedTo": [
+          "challenge-response (not yet wired)"
+        ],
+        "evidenceRefs": []
+      }
+    ]
+  },
+  "notifications": [
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:57:33.735Z",
+      "sentAt": "2026-06-01T12:57:33.735Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SM06eb887caeec312fbf6b0778c7e79b71",
+      "sentAt": "2026-06-01T12:57:33.743Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:57:34.763Z",
+      "sentAt": "2026-06-01T12:57:34.763Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SM3115ed786f79458e728d99aa848518c4",
+      "sentAt": "2026-06-01T12:57:34.765Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:57:35.325Z",
+      "sentAt": "2026-06-01T12:57:35.325Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SMb857af4e6f05d6fead8f69477956440a",
+      "sentAt": "2026-06-01T12:57:35.325Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:57:35.712Z",
+      "sentAt": "2026-06-01T12:57:35.712Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SMd67acc3636b8a63248f0b857cb183869",
+      "sentAt": "2026-06-01T12:57:35.712Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:57:45.625Z",
+      "sentAt": "2026-06-01T12:57:45.625Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SMa58082705aed4ec9430d3ca7a668ac6d",
+      "sentAt": "2026-06-01T12:57:45.625Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:57:46.174Z",
+      "sentAt": "2026-06-01T12:57:46.174Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SM33031dc546e7b1455d3ee5510725a253",
+      "sentAt": "2026-06-01T12:57:46.175Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:57:59.119Z",
+      "sentAt": "2026-06-01T12:57:59.119Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SM168c3799e47064a17e2ad6f85bfe292b",
+      "sentAt": "2026-06-01T12:57:59.120Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:57:59.838Z",
+      "sentAt": "2026-06-01T12:57:59.838Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SM01508ff29958689fb829617fdab4cfd8",
+      "sentAt": "2026-06-01T12:57:59.839Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:58:04.078Z",
+      "sentAt": "2026-06-01T12:58:04.078Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SM6a3f13366f2a917784ee05ceab0f3cf9",
+      "sentAt": "2026-06-01T12:58:04.079Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:58:04.477Z",
+      "sentAt": "2026-06-01T12:58:04.477Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SMb23fd83d0613ed00b421194e2e63f49e",
+      "sentAt": "2026-06-01T12:58:04.478Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:58:12.937Z",
+      "sentAt": "2026-06-01T12:58:12.937Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SM9bd76dd2a9bd184070b10b747d3ee827",
+      "sentAt": "2026-06-01T12:58:12.937Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:58:13.391Z",
+      "sentAt": "2026-06-01T12:58:13.391Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SM457af7c8471ffda12e3111d7ada74edc",
+      "sentAt": "2026-06-01T12:58:13.391Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:58:15.392Z",
+      "sentAt": "2026-06-01T12:58:15.392Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SMef513477414ed996a3279542ccae9ec5",
+      "sentAt": "2026-06-01T12:58:15.393Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:58:15.840Z",
+      "sentAt": "2026-06-01T12:58:15.840Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SM9f5f98a283d9d630ec6450dbbb199391",
+      "sentAt": "2026-06-01T12:58:15.842Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "escalation",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:58:18.523Z",
+      "sentAt": "2026-06-01T12:58:18.523Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "escalation",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SMe0d91ec7729a945c219b7868de7eff4e",
+      "sentAt": "2026-06-01T12:58:18.523Z",
+      "mode": "freeform"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "escalation",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "sse-2026-06-01T12:58:19.039Z",
+      "sentAt": "2026-06-01T12:58:19.039Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "escalation",
+      "negotiationId": "NEG-1780318589089",
+      "providerMessageId": "SM05a9c5ef9ced65baead9dfb84ece2782",
+      "sentAt": "2026-06-01T12:58:19.040Z",
+      "mode": "freeform"
+    }
+  ],
+  "notificationsSummary": {
+    "total": 32,
+    "delivered": 32,
+    "failed": 0,
+    "skipped": 0,
+    "byChannelKind": {
+      "ui-dashboard": 16,
+      "whatsapp": 16
+    }
+  }
+}

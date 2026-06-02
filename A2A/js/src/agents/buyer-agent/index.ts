@@ -529,6 +529,19 @@ class BuyerAgentExecutor implements AgentExecutor {
             ? `(KERI Ed25519 signature verified against sender's key)`
             : `(plain mode — NOT a KERI signature check)`)
         );
+        // Theater: per-message KRAM tick (mirror of seller-agent). Success verify
+        // above is logInternal-only; emit a parseable SSE line so the buyer's box
+        // renders a green tick per verified SELLER message. `aid` is the LIVE
+        // verified sender prefix (envelope.senderAid). SSE-only, additive — verify
+        // logic untouched.
+        sseBroadcaster.broadcast(
+          `[verify] ✓ counter=${sealed.envelope.counter} ` +
+          `type=${(sealed.payload as any)?.type ?? "?"} ` +
+          `payloadHash=${sealed.envelope.payloadHash.slice(0, 12)} ` +
+          `aid=${sealed.envelope.senderAid ?? "n/a"} ` +
+          `mode=${sealed.envelope.mode} ` +
+          `neg=${(sealed.payload as any)?.negotiationId ?? ""} valid=true`
+        );
         actual = sealed.payload;
       } else {
         // Iter 3: a message arrived with NO envelope. In a signed mode with

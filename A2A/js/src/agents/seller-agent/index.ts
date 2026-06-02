@@ -683,6 +683,19 @@ class SellerAgentExecutor implements AgentExecutor {
           ? `(KERI Ed25519 signature verified against sender's key)`
           : `(plain mode — NOT a KERI signature check)`)
       );
+      // Theater: per-message KRAM tick. The success verify above is logInternal-
+      // only; emit a parseable SSE line so the seller's box renders a green tick
+      // per verified BUYER message. `aid` is the LIVE per-message verified sender
+      // prefix (envelope.senderAid — present in kram, "n/a" in plain). SSE-only,
+      // additive — verify logic untouched.
+      sseBroadcaster.broadcast(
+        `[verify] ✓ counter=${sealed.envelope.counter} ` +
+        `type=${(sealed.payload as any)?.type ?? "?"} ` +
+        `payloadHash=${sealed.envelope.payloadHash.slice(0, 12)} ` +
+        `aid=${sealed.envelope.senderAid ?? "n/a"} ` +
+        `mode=${sealed.envelope.mode} ` +
+        `neg=${(sealed.payload as any)?.negotiationId ?? ""} valid=true`
+      );
       actual = sealed.payload;
     } else {
       // Iter 3: a message arrived with NO envelope. In a signed mode with
@@ -1201,6 +1214,18 @@ class SellerAgentExecutor implements AgentExecutor {
       ? `[identity] Buyer plain-mode check passed (NOT vLEI — GLEIF + agent card only) — proceeding`
       : `[identity] Buyer vLEI delegation verified (${vLEIResult.verificationScript}) — proceeding`;
     logInternal(proceedMsg);
+    // Theater: broadcast the seller→buyer identity verification over SSE so the
+    // RIGHT (seller) side has live identity-ceremony data. The buyer already
+    // broadcasts its mirror via startNegotiation's respond(); the seller's was
+    // logInternal-only, leaving the right side dark. Wording mirrors the buyer's
+    // so useVerificationRiver TRIGGER_PATTERNS match in both modes
+    // (/identity check passed/i, /delegation chain verified/i). SSE-only (no bus
+    // publish) — purely additive, does NOT touch the verify gate above.
+    sseBroadcaster.broadcast(
+      vLEIResult.verificationType === "DISABLED"
+        ? `✓ Buyer plain-mode identity check passed (NOT vLEI — GLEIF + agent card only) — proceeding`
+        : `✅ Buyer vLEI delegation chain verified (${vLEIResult.verificationScript}) — proceeding`
+    );
 
     // ── Audit Framework v6 — Iteration 2: parallel identity capture ─────────
     // The existing verifyCounterparty() above gates the negotiation. Now we

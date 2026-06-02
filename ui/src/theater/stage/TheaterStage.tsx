@@ -49,6 +49,7 @@ import type { UseBackOfficeConsultResult } from './useBackOfficeConsult';
 // Phase 9g — lift-and-grow wrapper for sub-agents (rest ⇔ active).
 import { SubAgentSlot } from './SubAgentSlot';
 import { useStageLayout, STAGE_VIEWBOX } from './useStageLayout';
+import { TrustSpine } from './TrustSpine';
 import type { VleiStatus } from '@/hooks/useVleiStatus';
 
 interface TheaterStageProps {
@@ -393,6 +394,13 @@ export function TheaterStage({
             />
           );
         })}
+
+        {/* Theater trust-visualization — two vLEI Agent boxes flanking the
+            spine. Static LEI on each box (correct), plus LIVE per-message-
+            verified AID + KRAM tick rail + one-time vLEI identity ceremony +
+            audit link, all derived from real SSE. Cross-verify: buyer box
+            shows the seller messages it verified, seller box the buyer's. */}
+        <TrustSpine events={events} />
       </div>
 
       {selectedAgentId && (
