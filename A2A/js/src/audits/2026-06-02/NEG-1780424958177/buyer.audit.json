@@ -1,0 +1,1104 @@
+{
+  "negotiationId": "NEG-1780424958177",
+  "perspective": "BUYER",
+  "outcome": "success",
+  "startedAt": "2026-06-02T18:29:18.179Z",
+  "generatedAt": "2026-06-02T18:30:57.720Z",
+  "selfProcessMode": {
+    "mode": "BASIC_SALES_QUOTING_1",
+    "resolvedCapabilities": {
+      "treasuryConsultation": true,
+      "inventoryLogisticsSubAgents": false,
+      "creditSubAgent": false,
+      "advisorMathAggregator": false,
+      "llmExecutiveJudgment": false,
+      "styleFramework": false,
+      "opponentStyleInference": false,
+      "autonomyLevels": false,
+      "perCounterpartyProfiles": false,
+      "customCommodityPdModels": false
+    },
+    "providerModes": {
+      "inventory": "demo",
+      "logistics": "demo",
+      "credit": "demo"
+    },
+    "evaluationContext": "live",
+    "resolvedFromEnv": {
+      "SELLER_RESPONSE_MODE": null,
+      "INVENTORY_MODE": null,
+      "LOGISTICS_MODE": null,
+      "CREDIT_MODE": null,
+      "EVALUATION_CONTEXT": null
+    }
+  },
+  "sellerResponseMode": {
+    "mode": "BASIC_SALES_QUOTING_1",
+    "resolvedCapabilities": {
+      "treasuryConsultation": true,
+      "inventoryLogisticsSubAgents": false,
+      "creditSubAgent": false,
+      "advisorMathAggregator": false,
+      "llmExecutiveJudgment": false,
+      "styleFramework": false,
+      "opponentStyleInference": false,
+      "autonomyLevels": false,
+      "perCounterpartyProfiles": false,
+      "customCommodityPdModels": false
+    },
+    "providerModes": {
+      "inventory": "demo",
+      "logistics": "demo",
+      "credit": "demo"
+    },
+    "evaluationContext": "live",
+    "resolvedFromEnv": {
+      "SELLER_RESPONSE_MODE": null,
+      "INVENTORY_MODE": null,
+      "LOGISTICS_MODE": null,
+      "CREDIT_MODE": null,
+      "EVALUATION_CONTEXT": null
+    },
+    "modeDescriptions": {
+      "BASIC_SALES_QUOTING_1": "Treasury-only — today's product baseline",
+      "L1_DELEGATED_ADVISORS": "Adds Inventory + Logistics sub-agents",
+      "L2_EXECUTIVE_REASONER": "Adds Credit sub-agent + Advisor math aggregator + L2 executive judgment (WEDGE1 ceiling)",
+      "L3_STYLE_AND_AUTONOMY": "Adds Style framework, opponent inference, autonomy levels (post-WEDGE1)",
+      "L4_LEARNED_PROFILES_AND_PD": "Adds per-counterparty profiles, custom PD models (post-WEDGE1)"
+    },
+    "changeInstructions": "Seller response mode is set by SELLER_RESPONSE_MODE env var at SELLER agent startup. Edit A2A/js/src/agents/seller-agent/.env and restart the seller (no hot reload — by design, so audit can't have ambiguous mode).",
+    "servedBy": "seller-agent@port-8080"
+  },
+  "parties": {
+    "self": {
+      "role": "BUYER",
+      "lei": "54930012QJWZMYHNJW95",
+      "legalEntityName": "TOMMY HILFIGER EUROPE B.V."
+    },
+    "counterparty": {
+      "role": "SELLER",
+      "lei": "3358004DXAMRWRUIYJ05",
+      "legalEntityName": "JUPITER KNITTING COMPANY"
+    }
+  },
+  "identity": {
+    "credentialMode": "vlei"
+  },
+  "agent": {
+    "self": {
+      "role": "BUYER",
+      "agentName": "tommyBuyerAgent",
+      "legalEntityName": "TOMMY HILFIGER EUROPE B.V.",
+      "lei": "54930012QJWZMYHNJW95",
+      "oorOfficer": "Tommy_Chief_Procurement_Officer",
+      "agentAID": "ECUxA94ZM7z4ba6zWb8TWSAkkYmhqaVnHnIeHUdScXBj"
+    },
+    "counterparty": {
+      "role": "SELLER",
+      "agentName": "jupiterSellerAgent",
+      "legalEntityName": "JUPITER KNITTING COMPANY",
+      "lei": "3358004DXAMRWRUIYJ05",
+      "oorOfficer": "Jupiter_Chief_Sales_Officer",
+      "agentAID": "EDg_nWqWWHpZE11VYVHWaTcXNNBgvTnkfqh5TSf18TNu"
+    }
+  },
+  "identityProof": {
+    "schemaVersion": 1,
+    "self": {
+      "credentialMode": "vlei",
+      "agentName": "tommyBuyerAgent",
+      "legalEntityName": "TOMMY HILFIGER EUROPE B.V.",
+      "lei": "54930012QJWZMYHNJW95",
+      "registrationStatus": "ISSUED",
+      "entityStatus": "ACTIVE",
+      "country": "NL",
+      "countryName": "NL",
+      "legalForm": "54M6",
+      "initialRegistrationDate": "2012-12-17T19:10:00Z",
+      "lastUpdateDate": "2025-07-25T12:28:51Z",
+      "nextRenewalDate": "2026-09-18T00:00:00Z",
+      "oorOfficer": "Tommy_Chief_Procurement_Officer",
+      "agentAID": "ECUxA94ZM7z4ba6zWb8TWSAkkYmhqaVnHnIeHUdScXBj",
+      "oorHolderAID": "ENwng5eRDiE9zzhF_xtQ20V_Jhdvy2JRsJ66mVhjyJB6",
+      "legalEntityAID": "EBIbiU1IqHImahjp3865b9_DpttbEXLcXOkhrxu2x3EE",
+      "qviAID": "ENkSU8oay8nAtxQdVl6OqgrDytH6IUQIgmNYbdfmIsEh",
+      "verificationPath": [
+        "GLEIF_ROOT → QVI",
+        "QVI → TOMMY HILFIGER EUROPE B.V. → Chief Procurement Officer → tommyBuyerAgent"
+      ],
+      "gleifSource": "GLEIF_API_LIVE",
+      "gleifFetchedAt": "2026-06-02T15:38:57.486Z",
+      "gleifRawResponseHash": "e00bfc2bb1eb7baf6a5a36e8f849362cbfdb41d7c0a845c95a504ee2024215d2"
+    },
+    "counterparty": {
+      "credentialMode": "vlei",
+      "agentName": "jupiterSellerAgent",
+      "legalEntityName": "JUPITER KNITTING COMPANY",
+      "lei": "3358004DXAMRWRUIYJ05",
+      "registrationStatus": "ISSUED",
+      "entityStatus": "ACTIVE",
+      "country": "IN",
+      "countryName": "IN",
+      "legalForm": "A0PS",
+      "initialRegistrationDate": "2018-06-19T13:13:12Z",
+      "lastUpdateDate": "2025-05-29T05:18:01Z",
+      "nextRenewalDate": "2026-07-01T18:30:00Z",
+      "oorOfficer": "Jupiter_Chief_Sales_Officer",
+      "agentAID": "EDg_nWqWWHpZE11VYVHWaTcXNNBgvTnkfqh5TSf18TNu",
+      "oorHolderAID": "ENmfzIkovOh-7_SDNKNYq_vSnZJypXjqOa0xFsol6Dih",
+      "legalEntityAID": "EMyXAkouMiBv394bqhOCa2gnDHkG0ryhpBnDJn18XMxJ",
+      "qviAID": "ENkSU8oay8nAtxQdVl6OqgrDytH6IUQIgmNYbdfmIsEh",
+      "verificationPath": [
+        "GLEIF_ROOT → QVI",
+        "QVI → JUPITER KNITTING COMPANY → Chief Sales Officer → jupiterSellerAgent"
+      ],
+      "gleifSource": "GLEIF_API_LIVE",
+      "gleifFetchedAt": "2026-06-02T18:29:29.029Z",
+      "gleifRawResponseHash": "395c9a834690301a972fb5c8950e3d37b8413ae064e8207232b2b94a7e4b75a0",
+      "verified": true,
+      "checksPerformed": [
+        "vlei-mode-acknowledged",
+        "agent-card-load:demo",
+        "lei-format-valid",
+        "gleif-lookup",
+        "registration-active",
+        "entity-active",
+        "keri-delegation-chain-verify",
+        "keri-script:DEEP-EXT"
+      ],
+      "warnings": [],
+      "errors": [],
+      "verifiedAt": "2026-06-02T18:29:31.226Z"
+    }
+  },
+  "messageSigningPosture": {
+    "schemaVersion": 1,
+    "tier": "SIGNED_HASH",
+    "tierDescription": "HASH_ENVELOPE + an Ed25519 signature over the KRAM canonical string (sender AID + ISO timestamp + SHA-256 payload digest), NOT the envelope hash. Proves the holder of the private key signed; key is not bound to a legal entity.",
+    "provider": "KramSigner",
+    "signingMode": "kram",
+    "capabilities": {
+      "tamperEvidenceOnPayload": true,
+      "tamperEvidenceOnEnvelope": true,
+      "replayProtection": true,
+      "stalenessProtection": true,
+      "cryptographicIdentity": true,
+      "leiBoundIdentity": false,
+      "keriKeyEventLog": false
+    },
+    "config": {
+      "maxMessageAgeMs": 300000,
+      "maxFutureSkewMs": 30000
+    },
+    "stats": {
+      "messagesSealed": 4,
+      "messagesVerified": 3,
+      "messagesRejected": 0,
+      "rejectionReasons": []
+    },
+    "honestNote": "Proves the holder of the signing key produced this message, but the signing key is not bound to the agent's legal entity via GLEIF. Non-repudiation only against the key holder."
+  },
+  "messageLog": [
+    {
+      "schemaVersion": 1,
+      "direction": "send",
+      "round": 1,
+      "payloadKind": "OFFER",
+      "recordedAt": "2026-06-02T18:29:33.217Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "tommyBuyerAgent",
+        "receiverAgentId": "jupiterSellerAgent",
+        "counter": 16,
+        "timestamp": "2026-06-02T18:29:33.197Z",
+        "payloadHash": "9739e0b7e3143cc795f61ca0ff9d468354a0292d221daf4c359e2e377b11feb8",
+        "envelopeHash": "4a01484668ef829e40a2e0fc4b02509d9442541dd9704ebf6b4160e3283439c0",
+        "senderAid": "EJvRWlYS5R71wQA1b-SgV2zz88kLQwwyZjxXZl1Ctu87",
+        "signature": "0BDmJV6bQmhAcK-p6J3SkIg9lXzbr0HQv74Z23VICycmTwqOp1TPDnACu20UsTh4ruHXG6nArgL9jMdn9RJkNPgG"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "receive",
+      "round": 1,
+      "payloadKind": "COUNTER_OFFER",
+      "recordedAt": "2026-06-02T18:30:05.186Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "jupiterSellerAgent",
+        "receiverAgentId": "tommyBuyerAgent",
+        "counter": 19,
+        "timestamp": "2026-06-02T18:30:00.746Z",
+        "payloadHash": "807f11ae3e286c088b5e67c77091ffd15a91d462cc946d564c8e42fb4b057fa2",
+        "envelopeHash": "9a79d80be9cd80b0a8374e231a5664e82eceb9d70d73a7870bcb1bfdf21e0434",
+        "senderAid": "EIl0zQs7kA3SaOPSwGVAFselH6fJHrAcriU4ucYiSMRu",
+        "signature": "0BDbty2AFZhb9Vn5lnogeReAXRlszjN8jlFxZdZR8GidCOnQvg1Z9Y4jZ6wnHhNFM9dw9SSRt4d5cdXIKQvtPogF"
+      },
+      "verification": {
+        "valid": true
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "send",
+      "round": 2,
+      "payloadKind": "COUNTER_OFFER",
+      "recordedAt": "2026-06-02T18:30:19.249Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "tommyBuyerAgent",
+        "receiverAgentId": "jupiterSellerAgent",
+        "counter": 17,
+        "timestamp": "2026-06-02T18:30:19.220Z",
+        "payloadHash": "8b31b124e8e5da61f7c2f99dfeead30d4ac3a7290799b1fc145e78ee29e0dd71",
+        "envelopeHash": "eb7aa98e3edbaf6e1d78b9a03bf24a824934a053e95f720e19f8fdecda5a10d3",
+        "senderAid": "EJvRWlYS5R71wQA1b-SgV2zz88kLQwwyZjxXZl1Ctu87",
+        "signature": "0BBa_mWB5IExa-7_XyXcjJJxzG8aJOqFC9bDYx6RD0p-_vlIdk13Krx5gkphECsKPLvs2ij4HH3B0hymA4J2vf4O"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "receive",
+      "round": 2,
+      "payloadKind": "COUNTER_OFFER",
+      "recordedAt": "2026-06-02T18:30:27.084Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "jupiterSellerAgent",
+        "receiverAgentId": "tommyBuyerAgent",
+        "counter": 20,
+        "timestamp": "2026-06-02T18:30:26.917Z",
+        "payloadHash": "d376e11ebbf1cdd6a14bb7460b400613ffc8e74b4369a95a0aa1dccac9b2ce3b",
+        "envelopeHash": "e9b72c71cb17264a3c82a39a675e3644bb8b4371ad59ce16dd491a06d9b3624c",
+        "senderAid": "EIl0zQs7kA3SaOPSwGVAFselH6fJHrAcriU4ucYiSMRu",
+        "signature": "0BBIRSyi04ej9-cRf9NoVklBblqPL6OpMl0AHosfTrQTWcY0XWRehYq7yg0HhO4c3L327mYYEK3Z6g47TnAYGxgI"
+      },
+      "verification": {
+        "valid": true
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "send",
+      "round": 3,
+      "payloadKind": "ACCEPT_OFFER",
+      "recordedAt": "2026-06-02T18:30:35.454Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "tommyBuyerAgent",
+        "receiverAgentId": "jupiterSellerAgent",
+        "counter": 18,
+        "timestamp": "2026-06-02T18:30:35.436Z",
+        "payloadHash": "1e94d34ab372422f96e81ce84c3c51654e18caa765849dac3a5f1ad6f753f2a5",
+        "envelopeHash": "e0ed5e3596ce62ae4cb2ee04a5a9a845f87ed97a673a8a47fcd35f55d396232c",
+        "senderAid": "EJvRWlYS5R71wQA1b-SgV2zz88kLQwwyZjxXZl1Ctu87",
+        "signature": "0BAsOE0yfcYPXShkFYuq30FK4k5hr-EZVR8K4qipXOLgtKnBGB85QoZ2PVeol1ywMyQiqu3QAMh4od46hciZtKUI"
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "receive",
+      "round": 2,
+      "payloadKind": "ACCEPT_OFFER",
+      "recordedAt": "2026-06-02T18:30:38.202Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "jupiterSellerAgent",
+        "receiverAgentId": "tommyBuyerAgent",
+        "counter": 21,
+        "timestamp": "2026-06-02T18:30:37.750Z",
+        "payloadHash": "c585956a41dc1f57d6abb0b8c7ce1151ec9f3c2a3474567f297886ea3ca15c23",
+        "envelopeHash": "9da25451b3e6b891b293f53a80d4a8b71ae7dcee237a53d85a6d4b965657d7b5",
+        "senderAid": "EIl0zQs7kA3SaOPSwGVAFselH6fJHrAcriU4ucYiSMRu",
+        "signature": "0BB-h3rGvgScPYeMK-cqfdP27yOLsDc9hVG4YNLa6OTPANPLv5HlGHrQzgOjNUPp384EfVXNmjY0wwGnsNMnP2EK"
+      },
+      "verification": {
+        "valid": true
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "direction": "send",
+      "payloadKind": "PURCHASE_ORDER",
+      "recordedAt": "2026-06-02T18:30:46.070Z",
+      "transportSignature": {
+        "mode": "kram",
+        "senderAgentId": "tommyBuyerAgent",
+        "receiverAgentId": "jupiterSellerAgent",
+        "counter": 19,
+        "timestamp": "2026-06-02T18:30:46.010Z",
+        "payloadHash": "62b5aba553d1a24abb2c711f7dd8c2a7e272a15defdbf6e0e740432ad24c2543",
+        "envelopeHash": "f7359ca14e97728a04dfd30d5023dd5e156ad1393f6b58c4071f1c72ced2de2a",
+        "senderAid": "EJvRWlYS5R71wQA1b-SgV2zz88kLQwwyZjxXZl1Ctu87",
+        "signature": "0BDXfDxkc0_FQpqpQIfZ8A1DqEAIF6sgBw61BMRfKecqtp0WF-LpMo0y2q6ONQHxeIWjUAzRzm2LKacW0afIBXsN"
+      }
+    }
+  ],
+  "intent": {
+    "schemaVersion": 1,
+    "perspective": "BUYER",
+    "intentSource": "SCENARIO_DECLARED",
+    "scenarioId": "mode-l2-full-audit-cotton",
+    "scenarioTitle": "L2 mode — full audit",
+    "buyerIntent": {
+      "goal": "secure-supply",
+      "hardConstraints": {
+        "maxBudgetPerUnit": 420,
+        "minQuantity": 50000
+      },
+      "softPreferences": {
+        "targetPricePerUnit": 380,
+        "preferredPaymentTerms": "Net 30",
+        "relationshipWeight": 0.4
+      },
+      "style": "balanced",
+      "walkAwayBehavior": "escalate"
+    },
+    "sellerIntent": {
+      "goal": "fill-capacity",
+      "hardConstraints": {
+        "sellerResponseMode": "L2_EXECUTIVE_REASONER",
+        "minMarginPct": 5
+      },
+      "softPreferences": {
+        "targetMarginPct": 8,
+        "preferredPaymentTerms": "Net 30"
+      },
+      "style": "balanced",
+      "walkAwayBehavior": "escalate"
+    },
+    "situation": {
+      "product": "FAB-COTTON-180GSM",
+      "quantity": 50000,
+      "market": "normal"
+    },
+    "expectedOutcome": {
+      "shape": "PRICE_RANGE_CLOSE",
+      "likely": "3-round close at ~₹375–₹395/unit (closing band similar to BASIC; the AUDIT is where the modes differ). Audit JSON: extras.l2.consultations[] has 3 entries with treasury/inventory/logistics/credit advisor data; tacticsTrace[] shows the math-aggregator outputs per round; mathOverrides[] populated if Gemini's price ever fell outside the guardrail band.",
+      "possible": "May close in 2 rounds if Gemini is healthy and free-tier quota is fresh. usedFallback flag on tacticsTrace entries reveals which rounds used real LLM vs rule-based fallback.",
+      "failureMode": "If SELLER_RESPONSE_MODE in .env is set to BASIC_SALES_QUOTING_1 instead of L2_EXECUTIVE_REASONER, the scenario will still run but the audit's extras.l2 will be empty {} (BASIC path doesn't write L2 extras). Check the UI Settings card's 'Active' mode before running.",
+      "priceRange": {
+        "minPerUnit": 375,
+        "maxPerUnit": 395,
+        "currency": "INR"
+      }
+    },
+    "deviationFromIntent": {
+      "dimensions": [
+        {
+          "dimension": "pricePerUnit",
+          "expected": "375–395 INR",
+          "actual": "355 INR",
+          "severity": "medium",
+          "note": "Final price 355 is outside the declared range 375–395."
+        }
+      ],
+      "overallSeverity": "medium"
+    }
+  },
+  "autonomy": {
+    "schemaVersion": 1,
+    "capabilitiesActive": {
+      "goalInterpretation": {
+        "active": true,
+        "justification": "Agent loads scenario via scenario-loader or parses CLI form via cli-parser without human relay."
+      },
+      "planning": {
+        "active": true,
+        "justification": "Buyer's decideAction and seller's L2 reasoner choose the round-by-round action sequence."
+      },
+      "toolInvocation": {
+        "active": true,
+        "justification": "Inventory / credit / logistics / treasury sub-agents and ACTUS contracts are invoked without per-call human approval."
+      },
+      "commitmentAuthority": {
+        "active": true,
+        "justification": "Buyer auto-commits the PO/Invoice on an ACCEPT_OFFER without human approval."
+      },
+      "peerCommunication": {
+        "active": true,
+        "justification": "Buyer↔seller and both↔treasury communicate directly over A2A without human relay."
+      },
+      "learningFromOutcome": {
+        "active": false,
+        "justification": "No per-deal feedback loop updates agent parameters today.",
+        "deferredTo": "L4_LEARNED_PROFILES_AND_PD (out of v6 audit scope)"
+      }
+    },
+    "humanOversightPosition": "HOOTL_with_guardrails",
+    "guardrails": [
+      "maxRounds=3",
+      "treasury-ACTUS-veto",
+      "applySellerConstraints"
+    ],
+    "commitGate": {
+      "state": "NOT_REQUIRED",
+      "description": "No human-approval gate exists in code today. Agent commits autonomously; wouldFireAt[] records events a future gate could have caught.",
+      "wouldFireAt": [],
+      "eventCounts": {
+        "TREASURY_VETO": 0,
+        "MAX_ROUNDS_REACHED": 0,
+        "COUNTERPARTY_REJECT_FINAL": 0,
+        "GUARDRAIL_OVERRIDE": 0
+      }
+    }
+  },
+  "negotiation": {
+    "roundsUsed": 3,
+    "maxRounds": 3,
+    "finalPrice": 355,
+    "quantity": 50000,
+    "deliveryDate": "2026-08-01",
+    "paymentTerms": "Net 30",
+    "priceTrail": [
+      {
+        "round": 1,
+        "buyer": 261,
+        "seller": 375,
+        "gap": 114
+      },
+      {
+        "round": 2,
+        "buyer": 330,
+        "seller": 355,
+        "gap": 25
+      },
+      {
+        "round": 3,
+        "buyer": 355
+      }
+    ]
+  },
+  "outcomeQuality": {
+    "closed": true,
+    "closedPrice": 355,
+    "buyerMax": 420,
+    "sellerMin": 350,
+    "currency": "INR",
+    "IR": {
+      "buyerIR": 65,
+      "sellerIR": 5,
+      "bothIR": true
+    },
+    "ZOPA": {
+      "low": 350,
+      "high": 420,
+      "width": 70,
+      "wasFeasible": true
+    },
+    "NBS": {
+      "fairPrice": 385,
+      "deviationFromNBS": -30,
+      "deviationPercent": -85.71428571428571
+    },
+    "surplusSplit": {
+      "buyerShare": 0.9285714285714286,
+      "sellerShare": 0.07142857142857142,
+      "totalSurplus": 3500000
+    },
+    "flags": {
+      "agreementTrap": true,
+      "sellerCapturedMost": false,
+      "buyerCapturedMost": true,
+      "outsideZOPA": false
+    },
+    "summary": "Deal closed at ₹355 — agreement trap (seller within 2% of floor). Buyer captured 93% of surplus.",
+    "computedAt": "2026-06-02T18:30:57.669Z"
+  },
+  "constraintDisclosure": {
+    "selfReservationPrice": {
+      "value": 420,
+      "source": "own-config",
+      "currency": "INR"
+    },
+    "fallbackUsed": {
+      "value": 350,
+      "source": "demo-constant",
+      "reason": "counterparty did not disclose sellerMin in ACCEPT_OFFER (older client or disclosure suppressed)"
+    }
+  },
+  "decisions": [
+    {
+      "round": 1,
+      "timestamp": "2026-06-02T18:29:43.301Z",
+      "perspective": "BUYER",
+      "llmProposal": {
+        "action": "OFFER",
+        "price": 261,
+        "reasoning": "Random opening offer with negotiation headroom",
+        "usedFallback": false
+      },
+      "finalDecision": {
+        "action": "OFFER",
+        "price": 261
+      }
+    },
+    {
+      "round": 2,
+      "timestamp": "2026-06-02T18:30:17.038Z",
+      "perspective": "BUYER",
+      "incomingOffer": 375,
+      "llmProposal": {
+        "action": "COUNTER",
+        "price": 330,
+        "reasoning": "Moving significantly to our target price of ₹330 demonstrates strong willingness to converge and close the deal efficiently, especially given the high borrowing rates.",
+        "usedFallback": false
+      },
+      "finalDecision": {
+        "action": "COUNTER",
+        "price": 330
+      },
+      "marketContext": {
+        "sofrRate": 0.048604124265866924,
+        "sofrSource": "SIMULATED",
+        "effectiveBorrowingRate": 0.054883,
+        "cottonPricePerLb": 0.833016126746949,
+        "capturedAt": "2026-06-02T18:30:17.038Z"
+      }
+    },
+    {
+      "round": 3,
+      "timestamp": "2026-06-02T18:30:35.137Z",
+      "perspective": "BUYER",
+      "incomingOffer": 355,
+      "llmProposal": {
+        "action": "ACCEPT",
+        "reasoning": "Their offer of ₹355 is within our maximum budget and this is the final round, making acceptance crucial to secure the deal and avoid failure.",
+        "usedFallback": false
+      },
+      "finalDecision": {
+        "action": "ACCEPT"
+      },
+      "marketContext": {
+        "sofrRate": 0.048604124265866924,
+        "sofrSource": "SIMULATED",
+        "effectiveBorrowingRate": 0.054883,
+        "cottonPricePerLb": 0.833016126746949,
+        "capturedAt": "2026-06-02T18:30:35.137Z"
+      }
+    }
+  ],
+  "logs": [
+    {
+      "round": 1,
+      "messageType": "OFFER",
+      "from": "BUYER",
+      "offeredPrice": 261,
+      "decision": "OFFER",
+      "reasoning": "Opening at ₹261, leaving negotiation room",
+      "timestamp": "2026-06-02T18:29:33.102Z",
+      "negotiationId": "NEG-1780424958177"
+    },
+    {
+      "round": 1,
+      "messageType": "COUNTER_OFFER",
+      "from": "SELLER",
+      "offeredPrice": 375,
+      "previousPrice": 261,
+      "priceMovement": 114,
+      "priceMovementPercent": 43.67816091954023,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "Their offer is significantly below our margin price, so we must counter higher in this initial round to anchor expectations and protect profitability.",
+      "timestamp": "2026-06-02T18:30:06.668Z",
+      "negotiationId": "NEG-1780424958177"
+    },
+    {
+      "round": 2,
+      "messageType": "COUNTER_OFFER",
+      "from": "BUYER",
+      "offeredPrice": 330,
+      "previousPrice": 261,
+      "priceMovement": 69,
+      "priceMovementPercent": 26.436781609195403,
+      "gap": 45,
+      "gapClosed": 60.526315789473685,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "Moving significantly to our target price of ₹330 demonstrates strong willingness to converge and close the deal efficiently, especially given the high borrowing rates.",
+      "timestamp": "2026-06-02T18:30:18.650Z",
+      "negotiationId": "NEG-1780424958177"
+    },
+    {
+      "round": 2,
+      "messageType": "COUNTER_OFFER",
+      "from": "SELLER",
+      "offeredPrice": 355,
+      "previousPrice": 375,
+      "priceMovement": -20,
+      "priceMovementPercent": -5.333333333333334,
+      "decision": "COUNTER_OFFER",
+      "reasoning": "LLM unavailable (GEMINI_ERROR_RULES_FALLBACK) — using rule-based fallback (protected margin floor)",
+      "timestamp": "2026-06-02T18:30:28.204Z",
+      "negotiationId": "NEG-1780424958177"
+    },
+    {
+      "round": 3,
+      "messageType": "ACCEPT",
+      "from": "BUYER",
+      "offeredPrice": 355,
+      "decision": "ACCEPT",
+      "reasoning": "Accepting seller's offer based on strategic analysis",
+      "timestamp": "2026-06-02T18:30:35.137Z",
+      "negotiationId": "NEG-1780424958177"
+    }
+  ],
+  "frameworkMetrics": {
+    "frameworkMetricsScope": "both",
+    "cost": {
+      "totalCostUSD": 0.0007353,
+      "currency": "USD",
+      "byModel": {
+        "gemini-2.5-flash": {
+          "calls": 2,
+          "inputTokens": 1476,
+          "outputTokens": 117,
+          "costUSD": 0.0007353
+        }
+      },
+      "perCallSource": "shared/llm-client.ts estimateCostUSD (GEMINI_PRICING table dated May 2026)"
+    },
+    "outcome": {
+      "closed": true,
+      "finalPrice": 355,
+      "currency": "INR",
+      "surplusCapturedShare": 0.9285714285714286
+    },
+    "riskAvoided": {
+      "treasuryVetoes": 0,
+      "maxRoundsReached": 0,
+      "counterpartyRejectFinal": 0,
+      "guardrailOverrides": 0,
+      "source": "/autonomy/commitGate/eventCounts"
+    }
+  },
+  "selfCheck": {
+    "selfCheckScope": "both",
+    "overallVerdict": "ON_TRACK",
+    "checks": [
+      {
+        "name": "identityVerified",
+        "passed": true,
+        "ref": "/identityProof"
+      },
+      {
+        "name": "messageIntegrityIntact",
+        "passed": true,
+        "ref": "/messageSigningPosture"
+      },
+      {
+        "name": "intentDeclaredAndTracked",
+        "passed": true,
+        "ref": "/intent"
+      },
+      {
+        "name": "reasoningAuditable",
+        "passed": null,
+        "ref": "/thinkCycleTrace",
+        "note": "scope: seller-only per iter-4 addendum Item 1/4 — not applicable on buyer audit"
+      },
+      {
+        "name": "delegationAttested",
+        "passed": null,
+        "ref": "/delegationChain",
+        "note": "scope: seller-only per iter-4 addendum Item 1/4 — not applicable on buyer audit"
+      }
+    ]
+  },
+  "compliance": {
+    "complianceScope": "both",
+    "evidenceRefConvention": "RFC-6901 JSON Pointers, extended with non-standard wildcard '*' meaning 'every index in the array at the parent path'. A reader expanding a wildcard MUST emit one concrete pointer per array index found on the audit being inspected; a wildcard pointing into an absent array (e.g. /thinkCycleTrace/* on a buyer audit) resolves to zero concrete pointers, which is the honest cross-side state per iter-5 addendum Item 0.",
+    "frameworks": [
+      {
+        "id": "NIST_AI_RMF",
+        "version": "1.0",
+        "mappedTo": [
+          "GOVERN-1.1",
+          "MEASURE-2.7",
+          "MANAGE-4.1"
+        ],
+        "evidenceRefs": [
+          "/autonomy",
+          "/decisions",
+          "/intent/deviationFromIntent"
+        ]
+      },
+      {
+        "id": "ISO_42001",
+        "version": "2023",
+        "mappedTo": [
+          "6.1.2",
+          "8.2",
+          "9.1"
+        ],
+        "evidenceRefs": [
+          "/autonomy/capabilitiesActive",
+          "/decisions"
+        ]
+      },
+      {
+        "id": "EU_AI_Act_Article_14",
+        "version": "Reg 2024/1689",
+        "mappedTo": [
+          "human-oversight"
+        ],
+        "evidenceRefs": [
+          "/delegationChain/*/euAiActArticle14",
+          "/autonomy/humanOversightPosition"
+        ]
+      },
+      {
+        "id": "DCC_2026",
+        "version": "Patil arXiv 2604.02767 (deferred)",
+        "mappedTo": [
+          "4-of-7 properties per iter-4 Item 5"
+        ],
+        "evidenceRefs": [
+          "/delegationChain/*/dcc"
+        ]
+      },
+      {
+        "id": "OpenTelemetry_GenAI",
+        "version": "semconv v1.28",
+        "mappedTo": [
+          "gen_ai.system",
+          "gen_ai.request.model",
+          "gen_ai.usage.*"
+        ],
+        "evidenceRefs": [
+          "/thinkCycleTrace/*/steps"
+        ]
+      },
+      {
+        "id": "VERIFAGENT_2025",
+        "version": "deferred (post-WEDGE1)",
+        "mappedTo": [
+          "challenge-response (not yet wired)"
+        ],
+        "evidenceRefs": []
+      }
+    ]
+  },
+  "notifications": [
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:29:31.251Z",
+      "sentAt": "2026-06-02T18:29:31.251Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:29:31.301Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:29:31.952Z",
+      "sentAt": "2026-06-02T18:29:31.952Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "negotiation-started",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:29:31.953Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:29:32.368Z",
+      "sentAt": "2026-06-02T18:29:32.368Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:29:32.369Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:29:32.781Z",
+      "sentAt": "2026-06-02T18:29:32.781Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:29:32.781Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:30:05.202Z",
+      "sentAt": "2026-06-02T18:30:05.202Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:30:05.203Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:30:05.991Z",
+      "sentAt": "2026-06-02T18:30:05.991Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:30:05.992Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:30:17.119Z",
+      "sentAt": "2026-06-02T18:30:17.119Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:30:17.120Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:30:17.936Z",
+      "sentAt": "2026-06-02T18:30:17.936Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "own-offer-sent",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:30:17.937Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:30:27.187Z",
+      "sentAt": "2026-06-02T18:30:27.187Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:30:27.188Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:30:27.702Z",
+      "sentAt": "2026-06-02T18:30:27.702Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "counterparty-offer-received",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:30:27.702Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "buyer-cpo",
+      "eventType": "deal-closed",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:30:57.835Z",
+      "sentAt": "2026-06-02T18:30:57.835Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "buyer-cpo",
+      "recipientAddress": {
+        "phoneE164": "+916382196461"
+      },
+      "eventType": "deal-closed",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:30:57.852Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    },
+    {
+      "channelId": "ui",
+      "channelKind": "ui-dashboard",
+      "channelMode": "n/a",
+      "recipientRole": "seller-cso",
+      "eventType": "deal-closed",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "sse-2026-06-02T18:30:58.383Z",
+      "sentAt": "2026-06-02T18:30:58.383Z",
+      "mode": "broadcast"
+    },
+    {
+      "channelId": "wa-twilio-sandbox",
+      "channelKind": "whatsapp",
+      "channelMode": "bsp",
+      "recipientRole": "seller-cso",
+      "recipientAddress": {
+        "phoneE164": "+917358971875"
+      },
+      "eventType": "deal-closed",
+      "negotiationId": "NEG-1780424958177",
+      "providerMessageId": "",
+      "sentAt": "2026-06-02T18:30:58.384Z",
+      "mode": "freeform",
+      "error": "63038/429: Account AC[REDACTED] exceeded the 50 daily messages limit"
+    }
+  ],
+  "notificationsSummary": {
+    "total": 24,
+    "delivered": 12,
+    "failed": 12,
+    "skipped": 0,
+    "byChannelKind": {
+      "ui-dashboard": 12,
+      "whatsapp": 12
+    }
+  }
+}

@@ -197,7 +197,7 @@ export function AgentTheater({ simulation }: AgentTheaterProps) {
 
   return (
     <div className="min-h-[calc(100vh-4rem)] w-full bg-background text-foreground">
-      <div className="container mx-auto px-6 py-8 max-w-[1400px]">
+      <div className="container mx-auto px-6 py-8 max-w-[1760px]">
         <TheaterTopBar
           livePhase={phaseInfo.livePhase}
           status={viewNeg.status}

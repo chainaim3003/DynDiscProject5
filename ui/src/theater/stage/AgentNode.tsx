@@ -73,20 +73,25 @@ export function AgentNode({
         <div className="text-[10px] font-mono text-muted-foreground leading-tight">
           {shortLei(identity.lei)}
         </div>
-        <div className="mt-0.5">
-          <span
-            className={cn(
-              'inline-block text-[9px] px-1.5 py-0.5 rounded-full uppercase tracking-wider font-medium',
-              statusLabel === 'active'
-                ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300'
-                : statusLabel === 'paused'
-                ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300'
-                : 'bg-muted text-muted-foreground',
-            )}
-          >
-            {statusLabel}
-          </span>
-        </div>
+        {/* Status pill — hidden for the resting 'idle' state (and when empty)
+            so buyer/seller don't show a noisy IDLE badge. 'active'/'paused'
+            still render. */}
+        {statusLabel && statusLabel !== 'idle' && (
+          <div className="mt-0.5">
+            <span
+              className={cn(
+                'inline-block text-[9px] px-1.5 py-0.5 rounded-full uppercase tracking-wider font-medium',
+                statusLabel === 'active'
+                  ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300'
+                  : statusLabel === 'paused'
+                  ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300'
+                  : 'bg-muted text-muted-foreground',
+              )}
+            >
+              {statusLabel}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -82,6 +82,10 @@ interface TheaterStageProps {
   /** Phase 5: called when the user dismisses the selection via the
    *  top-right chip's × button. */
   onClearSelection: () => void;
+  /** Path B: when 'trust-only', render ONLY the standalone TrustSpine panel
+   *  (no theater backdrop, envelopes, river, sub-agents, or overlays) in a
+   *  wider, cropped, bigger frame. Default 'full' = the full theater. */
+  variant?: 'full' | 'trust-only';
 }
 
 const VISIBLE_AGENTS: Array<{ id: AgentId }> = [
@@ -140,6 +144,7 @@ export function TheaterStage({
   selectedAgentId,
   onAgentClick,
   onClearSelection,
+  variant = 'full',
 }: TheaterStageProps) {
   const layout = useStageLayout();
   const { flights, completeFlight } = useEnvelopeFlights({ events, paused });
@@ -163,12 +168,44 @@ export function TheaterStage({
     return false;
   };
 
+  // Path B — standalone trust view. Drops the ENTIRE theater (backdrop,
+  // agents SVG, envelopes, river, sub-agent cluster, all overlays) and
+  // renders just the TrustSpine in a wider, cropped frame so the agents
+  // fill the screen. The viewBox crops the dead top/bottom of the 1000×600
+  // canvas (real content lives in y≈100–520) → a ~1000:470 panel that is
+  // much larger per pixel. maxWidth caps by viewport height so the whole
+  // panel stays on one screen; the 240 budget (header + page padding +
+  // a peek of the timeline below) and the 1400 cap are tunable one-liners.
+  if (variant === 'trust-only') {
+    return (
+      <div
+        className="relative w-full mx-auto rounded-xl border border-border bg-card/30 backdrop-blur-sm overflow-hidden"
+        style={{
+          aspectRatio: '1000 / 420',
+          maxWidth: 'min(1500px, calc((100vh - 200px) * 1000 / 420))',
+        }}
+      >
+        <TrustSpine events={events} vleiReachable={vleiOnStage} viewBox="0 108 1000 420" />
+      </div>
+    );
+  }
+
   return (
     <div
       className={cn(
-        'relative w-full max-w-[1100px] mx-auto rounded-xl border border-border bg-card/30 backdrop-blur-sm overflow-hidden',
+        'relative w-full mx-auto rounded-xl border border-border bg-card/30 backdrop-blur-sm overflow-hidden',
       )}
-      style={{ aspectRatio: `${vbW} / ${vbH}` }}
+      style={{
+        aspectRatio: `${vbW} / ${vbH}`,
+        // Width-driven sizing: the stage fills the page width up to this cap,
+        // keeping its 1000:600 ratio via aspectRatio above. On most screens this
+        // makes the stage TALLER than the viewport — intentional (big stage;
+        // scroll down to reach the timeline below). Want it smaller? lower this
+        // px cap and/or the max-w-[1760px] page wrapper in AgentTheater. Want it
+        // bounded to one screen again? restore:
+        //   min(1760px, calc((100vh - 80px) * ${vbW} / ${vbH}))
+        maxWidth: '1760px',
+      }}
     >
       {/* ─── SVG layer ──────────────────────────────────────────────── */}
       <svg
@@ -192,7 +229,13 @@ export function TheaterStage({
 
         {VISIBLE_AGENTS.map(({ id }) => {
           // Phase 9f — vLEI node hidden in plain mode.
-          if (id === 'vleiVerifier' && !vleiOnStage) return null;
+          // Trust-theater: the center vLEI disc + the buyer/seller discs are
+          // superseded by TrustSpine's "vLEI Agent" rectangle and the Tommy /
+          // Jupiter agent nodes (HTML overlay, drawn at the same 230/770 the
+          // envelopes already fly between). Skip all three here; plain-mode
+          // still draws its own lock block below, and the EnvelopeLayer still
+          // reads layout.positions.buyer/seller (unchanged) for flight endpoints.
+          if (id === 'vleiVerifier' || id === 'buyer' || id === 'seller') return null;
           const pos = layout.positions[id];
           if (!pos) return null;
 
@@ -360,7 +403,9 @@ export function TheaterStage({
       <div className="absolute inset-0">
         {VISIBLE_AGENTS.map(({ id }) => {
           // Phase 9f — vLEI node hidden in plain mode; skip its label too.
-          if (id === 'vleiVerifier' && !vleiOnStage) return null;
+          // Trust-theater: vLEI + buyer + seller superseded by TrustSpine's
+          // "vLEI Agent" rectangle and the Tommy / Jupiter agent nodes.
+          if (id === 'vleiVerifier' || id === 'buyer' || id === 'seller') return null;
 
           // Phase 9g — sub-agent HTML labels are hidden at rest. The icon-
           // strip is meant to be compact; the full label cluster (name +
@@ -400,7 +445,7 @@ export function TheaterStage({
             verified AID + KRAM tick rail + one-time vLEI identity ceremony +
             audit link, all derived from real SSE. Cross-verify: buyer box
             shows the seller messages it verified, seller box the buyer's. */}
-        <TrustSpine events={events} />
+        <TrustSpine events={events} vleiReachable={vleiOnStage} />
       </div>
 
       {selectedAgentId && (

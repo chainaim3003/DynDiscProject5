@@ -2531,6 +2531,77 @@ app.get('/api/quality/:negotiationId', (req, res) => {
   }
 });
 
+// ── Seller-side audit JSON ──────────────────────────────────────────────────
+// Served from the BUYER process because it is the one with filesystem access
+// to the shared per-deal folder (same place the /pdf route above already reads
+// seller.audit.json for enrichment). The seller agent (:8080) exposes no audit
+// endpoint. New-layout first, legacy _SELLER fallback — mirror of the buyer
+// JSON route, seller files.
+app.get('/api/quality/:negotiationId/seller', (req, res) => {
+  const { negotiationId } = req.params;
+  if (!/^NEG-\d+$/.test(negotiationId)) {
+    return void res.status(400).json({ error: "Invalid negotiationId format" });
+  }
+  try {
+    const candidates = [
+      path.join(getDealFolder(negotiationId), "seller.audit.json"),
+      path.join(escalationsDir, `${negotiationId}_success_SELLER.audit.json`),
+      path.join(escalationsDir, `${negotiationId}_escalation_SELLER.audit.json`),
+    ];
+    for (const fp of candidates) {
+      if (fs.existsSync(fp)) {
+        const audit = JSON.parse(fs.readFileSync(fp, "utf8"));
+        return void res.json(audit);
+      }
+    }
+    return void res.status(404).json({ error: `No seller audit JSON for ${negotiationId}` });
+  } catch (err: any) {
+    res.status(500).json({ error: err?.message ?? "unknown" });
+  }
+});
+
+// ── Seller-side audit PDF ───────────────────────────────────────────────────
+// Seller audit as PRIMARY, buyer audit as enrichment (mirror of the buyer PDF
+// route with the two arguments swapped). generateAuditPdf reads generic fields
+// with safe fallbacks and both sides share the v6 audit shape, so the seller
+// perspective renders correctly.
+app.get('/api/quality/:negotiationId/seller/pdf', async (req, res) => {
+  const { negotiationId } = req.params;
+  if (!/^NEG-\d+$/.test(negotiationId)) {
+    return void res.status(400).json({ error: "Invalid negotiationId format" });
+  }
+  try {
+    const sellerCandidates = [
+      path.join(getDealFolder(negotiationId), "seller.audit.json"),
+      path.join(escalationsDir, `${negotiationId}_success_SELLER.audit.json`),
+      path.join(escalationsDir, `${negotiationId}_escalation_SELLER.audit.json`),
+    ];
+    let sellerPath: string | null = null;
+    for (const fp of sellerCandidates) {
+      if (fs.existsSync(fp)) { sellerPath = fp; break; }
+    }
+    if (!sellerPath) {
+      return void res.status(404).json({ error: `No seller audit JSON for ${negotiationId}` });
+    }
+    const sellerAudit = JSON.parse(fs.readFileSync(sellerPath, "utf8"));
+    // Buyer audit as enrichment (optional).
+    let buyerAudit: any = null;
+    for (const fp of [
+      path.join(getDealFolder(negotiationId), "buyer.audit.json"),
+      path.join(escalationsDir, `${negotiationId}_success_BUYER.audit.json`),
+      path.join(escalationsDir, `${negotiationId}_escalation_BUYER.audit.json`),
+    ]) {
+      if (fs.existsSync(fp)) { try { buyerAudit = JSON.parse(fs.readFileSync(fp, "utf8")); } catch {} break; }
+    }
+    const { generateAuditPdf } = await import("../../shared/audit-pdf.js");
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", `attachment; filename="${negotiationId}-seller-audit.pdf"`);
+    await generateAuditPdf(sellerAudit, buyerAudit, res);
+  } catch (err: any) {
+    res.status(500).json({ error: err?.message ?? "pdf generation failed" });
+  }
+});
+
 // ── WEDGE1 / M1: validate seller-response-mode before listening ────────────────────────────
 // Fail-fast on misconfig. validateSellerResponseMode() throws if
 // SELLER_RESPONSE_MODE is set to a non-shippable value (L3/L4) or anything

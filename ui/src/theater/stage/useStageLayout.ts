@@ -71,7 +71,7 @@ export function useStageLayout(): StageLayout {
     // vLEI stays at top-center 500,110. With a 1100px max stage width
     // (set in TheaterStage's wrapper class), this gives a balanced
     // composition: buyer-left, vLEI-top, seller-right-with-team-cluster.
-    const FRONT_Y = 300;
+    const FRONT_Y = 250;
     const VLEI_Y  = 110;
 
     // Phase 9e — sub-agent cluster directly under the seller. Cluster
@@ -87,8 +87,8 @@ export function useStageLayout(): StageLayout {
 
     const positions: Record<string, AgentPosition> = {
       // Front row.
-      buyer:        { id: 'buyer',        x: 230, y: FRONT_Y, r: AVATAR_RADIUS },
-      seller:       { id: 'seller',       x: 770, y: FRONT_Y, r: AVATAR_RADIUS },
+      buyer:        { id: 'buyer',        x: 130, y: FRONT_Y, r: AVATAR_RADIUS },
+      seller:       { id: 'seller',       x: 870, y: FRONT_Y, r: AVATAR_RADIUS },
       vleiVerifier: { id: 'vleiVerifier', x: 500, y: VLEI_Y,  r: AVATAR_RADIUS },
 
       // Seller's back-office cluster — ACTIVE positions (used during consult).

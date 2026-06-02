@@ -107,10 +107,11 @@ function eventToFlight(ev: LogEvent): ActiveFlight | null {
   const p = ev.payload;
   // Channel-handshake noise — same filter AgentCenter uses.
   if (p.text.includes('Connected to') && p.text.includes('events')) return null;
-  // Theater trust-spine: per-message KRAM verify ticks ([verify] ✓ …) are
-  // rendered by TrustSpine as tick chips, not as flying envelopes. Skip them
-  // here so they don't spawn duplicate envelope flights.
-  if (p.text.startsWith('[verify]')) return null;
+  // Theater trust-spine: per-message KRAM verify ticks ([verify] ✓ …) and
+  // per-round Treasury consult markers ([treasury] consulted …) are rendered
+  // by TrustSpine (as tick chips / the seller→Treasury dip), not as flying
+  // envelopes. Skip both here so they don't spawn phantom envelope flights.
+  if (p.text.startsWith('[verify]') || p.text.startsWith('[treasury]')) return null;
 
   let from: AgentId | null = null;
   let to: AgentId | null = null;
