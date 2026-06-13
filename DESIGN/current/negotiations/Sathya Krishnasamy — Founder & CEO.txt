@@ -1,0 +1,16 @@
+Sathya Krishnasamy — Founder & CEO
+
+
+Sathya brings 25+ years at the frontier of emerging technology, having led Emerging Technologies — DLT, AI, and Quantum — at one of the largest U.S. health payors, where he conceptualized, architected, and trademarked payment-innovation and integrity solutions on enterprise blockchain. He has built in blockchain since 2018 across Hyperledger, Ethereum, and the Baseline Protocol, and his work has been recognized at ETHGlobal (2020), ETHBoston (2024), and ZK Hack / ZK Montreal (2024) — the win that seeded ZK-PRET — followed by a GLEIF accountable-AI finalist placement (2025) and the MIDSTREAM win with Circle, Arc, and Google DeepMind (2026). He advises the ACTUS Financial Working Group and the Center for Advancing Research in Financial Technology (CRAFT), and consults with governments and international organizations on emerging technology across supply chain, finance, and payments. A ZK Encode graduate with an extensive open-source footprint across the chainaimlabs and chainaim3003 GitHub organizations, he pairs rare cross-domain depth — regulated-enterprise payments, zero-knowledge engineering, and finance standards — with one mission: provable trust for the real economy.
+
+
+
+
+
+
+Dr. Badri Narayanan Gopalakrishnan — Strategic Advisor (Economics & Global Trade)
+
+\
+Dr. Badri is an internationally recognized economist who advises governments and ministries worldwide on policy, technology regulation, and global-trade analysis. He has consulted for the WTO, World Bank, and IMF, for governments across the Asia-Pacific and the UK, and for corporates and NGOs including McKinsey, and is deeply involved in the Government of India's Vision 2047 program. For Legent-DvP he anchors the macro and trade-economics foundation — sizing the supply-chain-finance opportunity, navigating cross-border regulation, and opening institutional doors in the exact corridors the platform targets (India, Japan, the Gulf, the US).
+Dr. Willi Brammertz — Advisor (Financial-Contract Standards)
+Dr. Brammertz is a founding member of ACTUS and Chair of the ACTUS Users Association Board of Governors — a foundational authority on the standardized modeling of financial contracts, an approach now studied by institutions and explored by central banks for risk and cash-flow analysis

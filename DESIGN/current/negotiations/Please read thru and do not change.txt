@@ -1,0 +1,29 @@
+Please read thru and do not change anything else from V9 and only change the following. 
+
+
+
+Traction Stage
+Prototype / MVP
+
+Traction
+
+Built on open standards, advised by the people who created them, and recognized by the institutions that govern trusted finance and identity — for a pre-revenue venture, this standards backing is our strongest credibility signal.
+Standards alignment & institutional relationships
+
+Built natively on open standards rather than proprietary formats: GLEIF vLEI / LEI (legal-entity identity), ACTUS (financial-contract risk), OMG BPMN 2.0 (business process), DCSA (electronic bill of lading), and PEPPOL (e-invoicing).
+
+Founder is an advisor to the ACTUS Financial Working Group and to CRAFT (Center for Advancing Research in Financial Technology). ACTUS co-founder Dr. Willi Brammertz (Chair, ACTUS Users Association Board of Governors) is a project advisor.
+
+ZK-PRET reviewed and FUNDED by the Mina Foundation (Navigator grant).
+
+Aligned with the GLEIF vLEI ecosystem and the Cardano Foundation's Veridian platform for legal-entity identity. 
+
+Recognition
+
+Three hackathon wins: MIDSTREAM (Circle × Arc × Google DeepMind, Apr 2026); GLEIF — finalist, Organizational Accountability of AI for Procurement (2025); ZK Hack / ZK Montreal — ZK-PRET origin (2024). Earlier accolades: ETHGlobal (2020), ETHBoston (2024).
+
+Multiple publications.
+
+We are at the point of opening up business development and commercialization. We have opened conversations with Director General of Foreign Trade, India, and Saudi Arabia. Working on collaborations with JETRO, and state chambers of commerce in the US.
+
+From an Agentic Automation point of view, there are marketing efforts started, with enough interests from various SMBs in the US, India markets.
